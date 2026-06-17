@@ -2,7 +2,7 @@
 // Fall 2026 MVP service worker
 // Purpose: lightweight offline cache for the single-file Navigator PWA.
 
-const CACHE_NAME = 'navigator-fall-2026-mvp-v2';
+const CACHE_NAME = 'navigator-fall-2026-mvp-v4';
 
 const CORE_ASSETS = [
   './',

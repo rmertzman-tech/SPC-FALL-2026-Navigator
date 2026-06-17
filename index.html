@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="navigator-build" content="navigator-fall-2026-mvp-v3-course-aligned" />
+  <meta name="navigator-build" content="navigator-fall-2026-mvp-v4-student-help-clean" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Navigator — Ethics Beyond Boundaries</title>
@@ -1386,9 +1386,20 @@
       margin: 12px 0;
     }
 
+  
+    /* Fall 2026 v4 student Help cleanup */
+    #release-notes-card,
+    .reviewer-only,
+    .demo-only,
+    .developer-only,
+    .internal-only {
+      display: none !important;
+    }
+
   </style>
 </head>
 <body>
+  <!-- NAV-FALL-2026-18 v4 student Help cleanup -->
   <!-- NAV-FALL-2026-17 v3 course-aligned polish -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
@@ -1617,6 +1628,15 @@
                 </div>
               </div>
               <div id="start-here-steps" class="start-path-grid"></div>
+
+              <div class="fall2026-demo-card confidence-note">
+                <strong>Want to see the full system before creating your own entries?</strong>
+                Try the fictional demo first. It loads sample reflections, field scans, moves, and memory so you can explore the Navigator without using your own private writing.
+                <div class="toolbar" style="margin-top:10px;">
+                  <button class="btn small purple" type="button" onclick="loadDemoData()">Try Fictional Demo</button>
+                  <button class="btn small ghost" type="button" onclick="showWorkspace('daily')">Return to Daily Practice</button>
+                </div>
+              </div>
 
               <div class="language-panel">
                 <div class="language-panel-title">Navigator Language: names for things you already know</div>
@@ -2718,94 +2738,6 @@
           </div>
         </div>
 
-        <div id="release-notes-card" class="card" style="margin-top:18px;">
-          <div class="card-header">
-            <div class="eyebrow">Stable feature build package</div>
-            <div class="card-title">Navigator NAV-IMPORT-1E — Critical Thinking Mini-Lab Display Support</div>
-            <div class="card-desc">This build preserves Living Threads, PWA installability, phone/laptop merge, Co-Living Twin behavior, the Development Arc Guided Introduction, Start Here, Pulse scoring anchors, experience-first language, Guided First Session, and Student Reflection Export while adding a first accessibility and visual polish pass.</div>
-          </div>
-          <div class="card-body">
-            <div class="accessibility-card">
-              <strong>Accessibility note for instructors and reviewers:</strong> v3.6E adds skip navigation, keyboard-visible focus states, larger touch targets, screen-reader labels for major controls, live status announcements, reduced-motion support, and mobile spacing improvements. This is a strong accessibility pass for a prototype, but it is not yet a formal WCAG/Section 508 certification. Before institutional deployment, Navigator should be tested with keyboard-only navigation, VoiceOver/NVDA, contrast tools, and student users who rely on assistive technology.
-            </div>
-            <div class="help-section reviewer-only">
-              <h3>Reviewer Start Here</h3>
-              <ol>
-                <li>Open <strong>Home</strong> and read the guided workflow card.</li>
-                <li>Click <strong>Load Fictional Demo</strong> if you want to see the full system without creating your own scans first.</li>
-                <li>Visit <strong>Pulse</strong> to complete a seven-signal coherence check-in, then visit <strong>Field Map</strong> to see how life-fields, Field Scans, and Context Assembly work together.</li>
-                <li>Visit <strong>Moves</strong> to see Move Cards, Cross-Field Move Comparison, Current Move selection, and Current Move Deliberation.</li>
-                <li>Return to <strong>Twin</strong> and ask the Twin what it sees in the demo case.</li>
-                <li>Use <strong>Memory</strong> to inspect Journal entries, import a PRF-22 profile, review Document Capsules, and use export/import controls.</li>
-              </ol>
-              <p>This demo is designed to show the complete agency-navigation loop quickly. It is not meant to replace the user's own reflective process.</p>
-            </div>
-
-            <div class="help-section">
-              <h3>Navigator Language: the lived version first</h3>
-              <p><strong>Every concept in Navigator is the formal name for something human beings already experience.</strong> Use the formal term only when it helps you think more clearly.</p>
-              <div class="glossary-grid">
-                <div class="glossary-item"><strong>Field</strong><span>What it feels like to enter a room, course, workplace, family system, or institution and sense what is rewarded, punished, expected, or made invisible.</span></div>
-                <div class="glossary-item"><strong>Suppression Gap</strong><span>The felt distance between what you could contribute and what the environment gives you a real route to express.</span></div>
-                <div class="glossary-item"><strong>Move</strong><span>The next concrete action small enough to begin, not a complete life plan.</span></div>
-                <div class="glossary-item"><strong>Living Thread</strong><span>Something you tend across time: a relationship, fear, commitment, practice, question, project, or source of meaning.</span></div>
-                <div class="glossary-item"><strong>BioBond</strong><span>A person, practice, place, memory, or community that helps your agency remain coherent under pressure.</span></div>
-                <div class="glossary-item"><strong>Daily Practice / Coherence Check</strong><span>A daily self-reading of the conditions supporting agency, not a medical reading or grade.</span></div>
-                <div class="glossary-item"><strong>Context Assembly</strong><span>The practice of seeing what your different fields create together as one real-life situation.</span></div>
-                <div class="glossary-item"><strong>Twin</strong><span>A reflective companion that helps you hear, revise, and deepen what you are trying to say about yourself and your situation.</span></div>
-              </div>
-            </div>
-
-            <div class="help-section">
-              <h3>What Navigator does</h3>
-              <p>Navigator helps a user talk with a Digital Twin, preserve memory through Journal entries and Document Capsules, map life-fields through Field Scans, assemble the combined context, generate possible Move Cards, compare moves across fields, and create a small Current Move Plan for deliberation.</p>
-            </div>
-            <div class="help-section">
-              <h3>What Navigator does not do</h3>
-              <ul>
-                <li>It does not diagnose, treat, grade, command, or replace professional advice.</li>
-                <li>It does not decide who the user is or what the user must do.</li>
-                <li>It does not store raw uploaded documents after a Document Capsule is created.</li>
-                <li>It does not cache backend AI calls, API responses, or raw uploaded document text.</li>
-              </ul>
-            </div>
-            <div class="help-section">
-              <h3>Privacy and security posture</h3>
-              <p><strong>Local-first by design:</strong> conversation, Journal entries, Coherence Check readings, PRF-22 profile summaries, Document Capsules, Field Scans, Context Assembly, Move Cards, comparison state, Current Move Plans, and Guide Notes are stored in this browser unless the user exports or restores them.</p>
-              <p><strong>Backend transparency:</strong> backend AI calls occur only when the user asks the Twin to interpret, summarize, deliberate, create a capsule, or generate an AI-assisted response. Those requests require sending selected prompt context to the configured backend service for processing. PRF-22 import stores the raw JSON locally and sends only a short profile summary when Twin Context is turned on. Users should avoid uploading highly sensitive material unless they understand that selected content may be sent for AI processing.</p>
-              <p><strong>User control:</strong> users can export JSON, export TXT, import/restore JSON, delete saved items, and clear local memory. Document uploads create reviewable capsules; the app saves only the capsule the user approves, not the raw uploaded document text.</p>
-            </div>
-            <div class="help-section demo-only">
-              <h3>Sample / demo data mode</h3>
-              <p>Use the fictional demo to show the full workflow quickly. It creates a sample Twin conversation, Journal, PRF-22 profile, Document Capsule, three Field Scans, Context Assembly, Move Cards, a Current Move, and a Current Move Plan. It will replace local memory only after confirmation.</p>
-              <div class="toolbar"><button class="btn small purple" type="button" onclick="loadDemoData()">Load Fictional Demo Data</button><button class="btn small ghost" type="button" onclick="exportTwinJournal('json')">Export Current JSON Backup</button></div>
-            </div>
-            <div class="help-section">
-              <h3>Near-term roadmap after this stable demo</h3>
-              <ul>
-                <li><strong>PWA testing and merge workflow:</strong> confirm install behavior, update behavior, offline app-shell behavior, and JSON Merge Import from phone to laptop.</li>
-                <li><strong>Navigator Private API specification:</strong> dedicated privacy-minimizing endpoints for Twin, Capsules, Field Maps, Move Cards, and guide-supported workflows.</li>
-                <li><strong>PRF-22 profile integration:</strong> next refinements can make Field Scans and Move Cards more explicitly PRF-aware without turning the profile into a deterministic verdict.</li>
-                <li><strong>Optional guided modules:</strong> future guide-supported modules may help users work with critical thinking, ethical reasoning, research projects, chapter-specific reflection, and coherence planning while preserving the private, user-directed Navigator model.</li>
-                <li><strong>Timeline and simulation layer:</strong> longer-term trajectory mapping, UCP-based scenario simulation, and agency-preserving planning over time.</li>
-              </ul>
-            </div>
-
-            <div class="help-section">
-              <h3>PWA behavior and safety checklist</h3>
-              <ul>
-                <li>This PWA caches only the app shell: index, manifest, service worker, and icons.</li>
-                <li>Do not cache backend AI calls or API responses.</li>
-                <li>Do not cache raw uploaded document text.</li>
-                <li>Keep JSON export/import visible and working before and after PWA conversion.</li>
-                <li>The service worker is versioned. When a new version is deployed, reload after activation if the browser prompts or shows stale behavior.</li>
-                <li>Test phone and laptop layouts separately: phone for capture/continuity, laptop for deep review and planning.</li>
-                <li>Keep optional encrypted sync as a later goal, not part of this stable local-first build.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
         <div class="card collapsible-card" style="margin-top:18px;" data-panel="help">
           <div class="card-header">
             <div class="card-title-row">
@@ -2868,14 +2800,14 @@
         <div class="card" style="margin-top:18px;">
           <div class="card-header">
             <div class="card-title">Settings</div>
-            <div class="card-desc">Backend configuration for the Claude proxy.</div>
+            <div class="card-desc">Optional AI connection settings.</div>
           </div>
           <div class="card-body">
             <div class="field">
-              <label for="backend-url">Backend proxy endpoint</label>
+              <label for="backend-url">AI connection endpoint</label>
               <input id="backend-url" type="text" value="https://ucp-backend-4dig.onrender.com/api/claude-proxy" onchange="saveBackendUrl(this.value)" />
             </div>
-            <div class="privacy-note">PWA build: service worker caches the app shell only. Backend/API calls and raw uploads are not cached. Version: Navigator v3.6B — Experience-First Language Guide.</div>
+            <div class="privacy-note">Most course reflection work is saved locally in this browser. Change this connection only if your instructor or support guide tells you to.</div>
           </div>
         </div>
         </aside>
@@ -3955,7 +3887,7 @@ async function handleImportPrf22File(event){
     const ranked = p.foundationsRanked || [];
     const capsule = {
       id: uid('doc'),
-      title:'PRF-22 / E-Twin Profile Capsule',
+      title:'Philosophical Profile (PRF-22) Capsule',
       mode:'quick_context',
       fileName:p.fileName || 'prf22-profile.json',
       fileSize:0,
