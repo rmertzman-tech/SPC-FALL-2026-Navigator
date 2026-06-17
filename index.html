@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="navigator-build" content="navigator-fall-2026-mvp-v5-pwa-restored" />
+  <meta name="navigator-build" content="navigator-fall-2026-mvp-v7-final-polish" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Navigator — Ethics Beyond Boundaries</title>
@@ -13,6 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="The Navigator" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <link rel="icon" href="./favicon.ico" sizes="any" />
   <style>
     :root {
       --void: #060b18;
@@ -1411,9 +1412,26 @@
       white-space: nowrap;
     }
 
+  
+    /* Fall 2026 v6 PWA install helper */
+    .pwa-install-btn { display: none; }
+    .pwa-install-btn.ready, .pwa-install-btn.help-visible { display: inline-flex; }
+    .pwa-install-note {
+      border-left: 4px solid rgba(13,94,87,.65);
+      background: rgba(13,94,87,.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 12px 0;
+    }
+    .pwa-install-note strong { color: var(--text); }
+
   </style>
 </head>
 <body>
+  <!-- NAV-FALL-2026-21 v7 final polish: favicon added; console build label cleaned -->
+  <!-- NAV-FALL-2026-20 v6 install helper -->
   <!-- NAV-FALL-2026-19 v5 PWA restored; temporary cache-bust hotfix removed -->
   <!-- NAV-FALL-2026-18 v4 student Help cleanup -->
   <!-- NAV-FALL-2026-17 v3 course-aligned polish -->
@@ -1651,6 +1669,15 @@
                 <div class="toolbar" style="margin-top:10px;">
                   <button class="btn small purple" type="button" onclick="loadDemoData()">Try Fictional Demo</button>
                   <button class="btn small ghost" type="button" onclick="showWorkspace('daily')">Return to Daily Practice</button>
+                </div>
+              </div>
+
+              <div id="start-install-card" class="pwa-install-note">
+                <strong>Install for easier daily use.</strong>
+                <div>After the site is live on GitHub Pages, Chrome or Edge can install it as an app. The button below will prompt installation when your browser makes the app available.</div>
+                <div class="toolbar" style="margin-top:10px;">
+                  <button class="btn small primary pwa-install-btn help-visible" type="button" onclick="promptInstallNavigator()">Install / Add to Home Screen</button>
+                  <button class="btn small ghost" type="button" onclick="showPwaInstallHelp()">Show install instructions</button>
                 </div>
               </div>
 
@@ -2867,7 +2894,7 @@ function countWords(text){
 
   const ENABLE_PWA = true;
   const DEFAULT_BACKEND = 'https://ucp-backend-4dig.onrender.com/api/claude-proxy';
-  const APP_VERSION = 'The Navigator — Ethics Beyond Boundaries / Fall 2026 v5';
+  const APP_VERSION = 'The Navigator — Ethics Beyond Boundaries / Fall 2026 v7';
 
   const NAV_CONFIG = {
     productionMode: true,
@@ -6274,6 +6301,87 @@ function importStandaloneDailyPulseJSON(pulse){
   }
 
 
+
+  
+  // Fall 2026 v6: PWA install helper.
+  // Chrome/Edge do not always show an automatic prompt immediately. We capture
+  // beforeinstallprompt and expose a student-facing install button when ready.
+  let deferredNavigatorInstallPrompt = null;
+  let navigatorInstallReady = false;
+
+  function isNavigatorStandalone(){
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+
+  function updateNavigatorInstallUi(){
+    const buttons = document.querySelectorAll('.pwa-install-btn');
+    const installed = isNavigatorStandalone();
+
+    buttons.forEach((btn) => {
+      if(installed){
+        btn.classList.remove('ready');
+        btn.textContent = 'Installed';
+        btn.disabled = true;
+        return;
+      }
+
+      btn.disabled = false;
+      btn.textContent = navigatorInstallReady ? 'Install App' : 'Install / Add to Home Screen';
+
+      if(navigatorInstallReady || btn.classList.contains('help-visible')){
+        btn.classList.add('ready');
+      } else {
+        btn.classList.remove('ready');
+      }
+    });
+  }
+
+  function showPwaInstallHelp(){
+    const chromeText = 'Chrome or Edge: keep the page open for about 30 seconds, click or tap once, then look for the install icon in the address bar or open the browser menu and choose Install app.';
+    const iosText = 'iPhone or iPad: use the Share button and choose Add to Home Screen. Some iOS browsers do not support the in-page install prompt.';
+    const alreadyText = 'If the app is already installed, the install prompt will not appear again.';
+    alert(chromeText + '\n\n' + iosText + '\n\n' + alreadyText);
+  }
+
+  async function promptInstallNavigator(){
+    if(isNavigatorStandalone()){
+      alert('The Navigator is already running as an installed app.');
+      return;
+    }
+
+    if(!deferredNavigatorInstallPrompt){
+      showPwaInstallHelp();
+      return;
+    }
+
+    const promptEvent = deferredNavigatorInstallPrompt;
+    deferredNavigatorInstallPrompt = null;
+    navigatorInstallReady = false;
+    updateNavigatorInstallUi();
+
+    try {
+      promptEvent.prompt();
+      await promptEvent.userChoice;
+    } catch(error) {
+      console.warn('[Navigator PWA] Install prompt failed:', error);
+    }
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredNavigatorInstallPrompt = event;
+    navigatorInstallReady = true;
+    updateNavigatorInstallUi();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredNavigatorInstallPrompt = null;
+    navigatorInstallReady = false;
+    updateNavigatorInstallUi();
+  });
+
+  window.promptInstallNavigator = promptInstallNavigator;
+  window.showPwaInstallHelp = showPwaInstallHelp;
 
   function renderAll(){
     setTwinMode(getMode());
@@ -10008,8 +10116,8 @@ Return only valid JSON with this shape:
   window.addEventListener('hashchange', applyHashWorkspace);
 
 
-  window.NAV_PULSE_BUILD_4E4 = 'navigator-v3.6e.12-nav-pulse-4e4-countwords-double-lock';
-console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
+  window.NAV_FALL_2026_BUILD = 'navigator-v3.6e.12-nav-pulse-4e4-countwords-double-lock';
+console.info('Navigator build loaded:', window.NAV_FALL_2026_BUILD);
 
 // ── Navigator-4E: Phase 1 ABCD Prompt Bank Integration ──
   // Purpose: make Attend + ABCD prompts visibly present before writing,
@@ -10452,6 +10560,7 @@ console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
       setPhenomenologyPulseHistory(restored.phenomenologyPulse || []);
       syncClearReceiveUI();
       renderAll();
+    updateNavigatorInstallUi();
       syncSetStatus('Navigator memory replaced with received data.');
     } catch(e) {
       syncSetStatus('Replace failed: ' + e.message, true);
