@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="navigator-build" content="navigator-fall-2026-mvp-v7-final-polish" />
+  <meta name="navigator-build" content="navigator-fall-2026-mvp-v8-visible-install" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Navigator — Ethics Beyond Boundaries</title>
@@ -1414,7 +1414,7 @@
 
   
     /* Fall 2026 v6 PWA install helper */
-    .pwa-install-btn { display: none; }
+    .pwa-install-btn { display: inline-flex; }
     .pwa-install-btn.ready, .pwa-install-btn.help-visible { display: inline-flex; }
     .pwa-install-note {
       border-left: 4px solid rgba(13,94,87,.65);
@@ -1430,6 +1430,7 @@
   </style>
 </head>
 <body>
+  <!-- NAV-FALL-2026-22 v8 visible install button -->
   <!-- NAV-FALL-2026-21 v7 final polish: favicon added; console build label cleaned -->
   <!-- NAV-FALL-2026-20 v6 install helper -->
   <!-- NAV-FALL-2026-19 v5 PWA restored; temporary cache-bust hotfix removed -->
@@ -1515,13 +1516,14 @@
 
           <div class="secondary-action-row" aria-label="Secondary Daily Practice actions">
             <button class="btn small ghost" type="button" onclick="showWorkspace('pulse')">Quick Coherence Check</button>
+            <button class="btn small ghost pwa-install-btn help-visible" type="button" onclick="promptInstallNavigator()">Add to Home Screen</button>
             <button class="btn small ghost" type="button" onclick="showWorkspace('start')">Start Here</button>
             <button class="btn small ghost" type="button" onclick="showWorkspace('twin'); startTwin();">Talk with My Twin</button>
             <button class="btn small ghost" type="button" onclick="showWorkspace('moves')">Choose One Move</button>
           </div>
 
           <div class="workspace-note" style="margin-top:14px;">
-            Most days, begin with ABCD Daily Practice. Use Coherence Check only when you need the quick version. Use Memory / Export when your instructor asks for a Canvas checkpoint.
+            Most days, begin with ABCD Daily Practice. Use Coherence Check only when you need the quick version. Use Memory / Export when your instructor asks for a Canvas checkpoint. Use Add to Home Screen to install the Navigator for easier daily access.
           </div>
         </div>
       </div>
@@ -2894,7 +2896,7 @@ function countWords(text){
 
   const ENABLE_PWA = true;
   const DEFAULT_BACKEND = 'https://ucp-backend-4dig.onrender.com/api/claude-proxy';
-  const APP_VERSION = 'The Navigator — Ethics Beyond Boundaries / Fall 2026 v7';
+  const APP_VERSION = 'The Navigator — Ethics Beyond Boundaries / Fall 2026 v8';
 
   const NAV_CONFIG = {
     productionMode: true,
@@ -6326,7 +6328,7 @@ function importStandaloneDailyPulseJSON(pulse){
       }
 
       btn.disabled = false;
-      btn.textContent = navigatorInstallReady ? 'Install App' : 'Install / Add to Home Screen';
+      btn.textContent = navigatorInstallReady ? 'Install App' : 'Add to Home Screen';
 
       if(navigatorInstallReady || btn.classList.contains('help-visible')){
         btn.classList.add('ready');
@@ -6337,8 +6339,8 @@ function importStandaloneDailyPulseJSON(pulse){
   }
 
   function showPwaInstallHelp(){
-    const chromeText = 'Chrome or Edge: keep the page open for about 30 seconds, click or tap once, then look for the install icon in the address bar or open the browser menu and choose Install app.';
-    const iosText = 'iPhone or iPad: use the Share button and choose Add to Home Screen. Some iOS browsers do not support the in-page install prompt.';
+    const chromeText = 'Chrome or Edge: use the address-bar install icon if it appears, or open the browser menu and choose Install app. If no browser prompt appears, the site may still need a refresh after the latest service worker update.';
+    const iosText = 'iPhone or iPad: tap Share, then choose Add to Home Screen. iOS uses this manual flow instead of the in-page install prompt.';
     const alreadyText = 'If the app is already installed, the install prompt will not appear again.';
     alert(chromeText + '\n\n' + iosText + '\n\n' + alreadyText);
   }
