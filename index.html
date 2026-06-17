@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="navigator-build" content="navigator-fall-2026-mvp-v4-student-help-clean" />
+  <meta name="navigator-build" content="navigator-fall-2026-mvp-v5-pwa-restored" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Navigator — Ethics Beyond Boundaries</title>
@@ -712,7 +712,7 @@
     .coach-card.ebb-coach:hover { border-color:rgba(13,94,87,.6); }
     .coach-card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
     .coach-title { font-weight:900; color:var(--text); font-size:.95rem; }
-    .coach-week-badge {
+    .coach-chapter-badge {
       flex-shrink:0; font:700 .6rem/1 var(--mono); text-transform:uppercase;
       letter-spacing:.07em; background:rgba(13,94,87,.25); color:#5fc9bf;
       border:1px solid rgba(13,94,87,.4); border-radius:999px; padding:3px 7px; white-space:nowrap;
@@ -1196,7 +1196,7 @@
     @media (max-width: 760px){ .import-preview-grid, .import-checks { grid-template-columns: 1fr; } .import-modal-head { flex-direction:column; } }
 
 
-    /* ── NAV-PULSE-4E: Phase 1 ABCD Prompt Bank visible scaffolding ── */
+    /* ── Navigator-4E: Phase 1 ABCD Prompt Bank visible scaffolding ── */
     .phenom-phase1-prompt-card {
       border: 1px solid rgba(201,168,76,.28);
       background:
@@ -1396,9 +1396,25 @@
       display: none !important;
     }
 
+  
+    /* Fall 2026 v5 PWA restoration and source cleanup */
+    .coach-chapter-badge {
+      flex-shrink: 0;
+      font: 700 .6rem/1 var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      background: rgba(13,94,87,.25);
+      color: #5fc9bf;
+      border: 1px solid rgba(13,94,87,.4);
+      border-radius: 999px;
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+
   </style>
 </head>
 <body>
+  <!-- NAV-FALL-2026-19 v5 PWA restored; temporary cache-bust hotfix removed -->
   <!-- NAV-FALL-2026-18 v4 student Help cleanup -->
   <!-- NAV-FALL-2026-17 v3 course-aligned polish -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -2834,9 +2850,9 @@
   </main>
 
 <script>
-// NAV-PULSE-4E.1 HOTFIX: make countWords available before any dashboard render.
-// Some Phenomenology dashboard code may call countWords(), while older Navigator builds
-// used wordCount(). Define both defensively at script start.
+// Fall 2026 compatibility: make countWords available before any dashboard render.
+// Some dashboard code may call countWords(), while older local entries may expect
+// wordCount(). Define both defensively at script start.
 function wordCount(text){
   return String(text || '').trim().split(/\s+/).filter(Boolean).length;
 }
@@ -2844,55 +2860,14 @@ function countWords(text){
   return wordCount(text);
 }
 
-// NAV-PULSE-4E.2 HOTFIX: service-worker cache bust.
-// This build intentionally unregisters old Navigator service workers and clears
-// Navigator app-shell caches once, then reloads with a cache-busting query string.
-// It is designed to prevent reviewers from seeing a stale cached pre-4E build.
-(function(){
-  const NAV_PULSE_4E2_BUILD = 'navigator-v3.6e.11-nav-pulse-4e3-local-wordcount-stability';
-  const NAV_PULSE_4E2_RELOAD_KEY = 'navigator_4e2_cache_bust_reload_' + NAV_PULSE_4E2_BUILD;
-  async function navPulse4E2ClearOldPwaShell(){
-    try{
-      let changed = false;
-      if('serviceWorker' in navigator){
-        const regs = await navigator.serviceWorker.getRegistrations();
-        if(regs && regs.length){
-          await Promise.all(regs.map(reg => reg.unregister()));
-          changed = true;
-        }
-      }
-      if('caches' in window){
-        const names = await caches.keys();
-        const targets = names.filter(name => /navigator|spc-navigator|workbox|app-shell/i.test(name));
-        if(targets.length){
-          await Promise.all(targets.map(name => caches.delete(name)));
-          changed = true;
-        }
-      }
-      if(changed && !sessionStorage.getItem(NAV_PULSE_4E2_RELOAD_KEY)){
-        sessionStorage.setItem(NAV_PULSE_4E2_RELOAD_KEY, '1');
-        const base = window.location.origin + window.location.pathname;
-        const hash = window.location.hash || '';
-        window.location.replace(base + '?v=4e2-cache-bust-' + Date.now() + hash);
-      }
-    } catch(err){
-      console.warn('NAV-PULSE-4E.2 cache-bust could not complete:', err);
-    }
-  }
-  window.navPulse4E2ClearOldPwaShell = navPulse4E2ClearOldPwaShell;
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', () => setTimeout(navPulse4E2ClearOldPwaShell, 25));
-  } else {
-    setTimeout(navPulse4E2ClearOldPwaShell, 25);
-  }
-})();
+// Fall 2026 PWA: service worker registration is enabled below.
 
 (function(){
   'use strict';
 
-  const ENABLE_PWA = false; // NAV-PULSE-4E.2: temporarily disable auto PWA registration while stale service-worker caches are cleared.
+  const ENABLE_PWA = true;
   const DEFAULT_BACKEND = 'https://ucp-backend-4dig.onrender.com/api/claude-proxy';
-  const APP_VERSION = 'Navigator v3.6E.10 — NAV-PULSE-4E.2 Service Worker Cache-Bust Hotfix';
+  const APP_VERSION = 'The Navigator — Ethics Beyond Boundaries / Fall 2026 v5';
 
   const NAV_CONFIG = {
     productionMode: true,
@@ -4113,7 +4088,7 @@ async function handleImportPrf22File(event){
     return pulseDateKeyFromDate(entry.createdAt || Date.now()) === pulseDateKeyFromDate(new Date());
   }
 
-  // NAV-PULSE-4E.4 LOCAL WORDCOUNT STABILITY: self-contained; no global countWords dependency.
+  // Navigator-4E.4 LOCAL WORDCOUNT STABILITY: self-contained; no global countWords dependency.
   function getStrongestPhenomenologyDimension(responses){
     const labels = { attend:'Attend', agency:'Agency', beauty:'Beauty/Awe', context:'Context', dynamic:'Dynamic' };
 
@@ -4321,7 +4296,7 @@ async function handleImportPrf22File(event){
       abcThought: String(entry.abcThought || '').slice(0, 1000)
     };
   }
-// ── NAV-PULSE-3: Standalone Daily Practice / Coherence Check Import Adapter ──
+// ── Navigator-3: Standalone Daily Practice / Coherence Check Import Adapter ──
 
 function isStandaloneDailyPulseJSON(data){
   return !!(
@@ -4342,7 +4317,7 @@ function wordCount(text){
   return String(text || '').trim().split(/\s+/).filter(Boolean).length;
 }
 
-// NAV-PULSE-4B.1 compatibility alias: newer Phenomenology cards call countWords(),
+// Navigator-4B.1 compatibility alias: newer Phenomenology cards call countWords(),
 // while the Navigator already used wordCount(). Keep both names available.
 function countWords(text){
   return wordCount(text);
@@ -5002,7 +4977,7 @@ function importStandaloneDailyPulseJSON(pulse){
 
 
 
-  // ── NAV-PULSE-4C: rich prototype prompt pools + primary Phenomenology / Quick Coherence Check hierarchy ──
+  // ── Navigator-4C: rich prototype prompt pools + primary Phenomenology / Quick Coherence Check hierarchy ──
   const PHENOM_PROMPT_POOLS = {
     attend: [
       'Before explaining anything, what is present for you right now? Name one sensation, one mood, and one concern, pull, or pressure.',
@@ -5101,7 +5076,7 @@ function importStandaloneDailyPulseJSON(pulse){
       + '<div class="quick-actions" style="margin-top:10px;"><button class="btn small purple" type="button" onclick="prepareTwinFromPhenomenologyEntry(\'' + escapeAttr(entry.id) + '\')">Ask Twin About This</button><button class="btn small ghost" type="button" onclick="prepareSageFromPhenomenologyEntry(\'' + escapeAttr(entry.id) + '\')">Take into SAGE</button><button class="btn small ghost" type="button" onclick="showWorkspace(\'pulse\')">Review Linked Check</button></div></div>';
   }
 
-  // ── NAV-PULSE-4A: Native Phenomenology First Inquiry Path ──
+  // ── Navigator-4A: Native Phenomenology First Inquiry Path ──
   function collectPhenomenologyResponses(){
     return {
       attend: String((document.getElementById('phenom-attend') || {}).value || '').slice(0, 2400),
@@ -5185,7 +5160,7 @@ function importStandaloneDailyPulseJSON(pulse){
       id,
       type:'phenomenological_pulse',
       subtype:'phenomenology_first_with_coherence_translation',
-      version:'NAV-PULSE-4E-phase1-abcd-prompts',
+      version:'Navigator-4E-phase1-abcd-prompts',
       createdAt: now.toISOString(),
       dateLabel: now.toLocaleDateString([], { month:'short', day:'numeric' }),
       phenomenology: { prompts: collectPhenomenologyPrompts(), responses },
@@ -5312,7 +5287,7 @@ function importStandaloneDailyPulseJSON(pulse){
   }
   window.prepareSageFromPhenomenologyEntry = prepareSageFromPhenomenologyEntry;
 
-  // ── NAV-PULSE-4D: Instructor-safe Phenomenology First completion receipts ──
+  // ── Navigator-4D: Instructor-safe Phenomenology First completion receipts ──
   function buildPhenomenologyReceipt(entry){
     entry = entry || getPhenomenologyPulseHistory().slice(-1)[0];
     if(!entry) return null;
@@ -5324,7 +5299,7 @@ function importStandaloneDailyPulseJSON(pulse){
     const scores = (entry.coherenceTranslation || {}).scores || {};
     return {
       type:'phenomenology_first_completion_receipt',
-      version:'NAV-PULSE-4E',
+      version:'Navigator-4E',
       generatedAt:new Date().toISOString(),
       entryId:entry.id,
       createdAt:entry.createdAt,
@@ -9124,7 +9099,7 @@ Return only valid JSON with this shape:
     {
       id:'ebb-prf-interpretation', title:'PRF Interpretation Coach', category:'EBB Chapter Coach',
       purpose:'Work analytically with your PRF-22 profile. Translate foundation scores into lived vocabulary, validate what the profile gets right, name its blind spots, engage your growth target honestly, and connect your profile to the course ethical traditions.',
-      tags:['PRF','moral foundations','Chapter 2','Week 2'],
+      tags:['PRF','moral foundations','Chapter 2','Chapter 2'],
       outputs:'Foundation translation, validating moment, blind spot, growth target response, assembly history, framework connection, OS2 question.',
       steps:[
         'CHAPTER 2 — Complete after importing your PRF-22. Translate your two highest foundations into your own language — not the labels, but what each actually cares about. Give one specific example of each guiding a judgment you still think was right.',
@@ -9155,7 +9130,7 @@ Return only valid JSON with this shape:
     {
       id:'ebb-boisjoly-witness', title:'Suppression Gap Witness Coach — Boisjoly', category:'EBB Chapter Coach',
       purpose:'Apply the full SAGE framework to the Boisjoly/Challenger case. Practice situational and structural seeing, apply virtue ethics and all five traditions, connect the Capability Lab simulation findings, and bridge to your own Field Scan.',
-      tags:['Boisjoly','Challenger','SAGE','virtue ethics','Chapter 3','Week 4'],
+      tags:['Boisjoly','Challenger','SAGE','virtue ethics','Chapter 3','Chapter 3'],
       outputs:'Situational facts, structural features, virtue ethics analysis, moralism vs. moral world design, simulation connection, personal Field Scan bridge.',
       steps:[
         'CHAPTER 3 — Complete after watching the Boisjoly footage, reading the chapter, and finishing the Capability Lab Challenger simulation. Pull up your simulation notes. Situational seeing: Name the three most morally relevant facts in the Challenger situation. What specific information existed, and what was the specific moment the burden of proof was reversed?',
@@ -9170,7 +9145,7 @@ Return only valid JSON with this shape:
     {
       id:'ebb-maathai-liberation', title:'Maathai Liberation and Construction Coach', category:'EBB Chapter Coach',
       purpose:'Apply social contract theory and the Liberation/Construction Step to Maathai/Green Belt. Practice OS2 design analysis, connect to your Field Scan as opportunity as well as constraint, and name one thing you could build alongside your institutional constraints.',
-      tags:['Maathai','Green Belt','social contract','OS2','liberation','Chapter 4','Week 5'],
+      tags:['Maathai','Green Belt','social contract','OS2','liberation','Chapter 4','Chapter 4'],
       outputs:'Suppression analysis, social contract verdict, constructive move design, OS2 diversity analysis, secondary framework, Field Scan opportunity, liberation question.',
       steps:[
         'CHAPTER 4 — Complete after reading the chapter. Review your most recent Field Scan first. Suppression seeing: Name three structural features of the colonial land system and Moi authoritarianism that produced the conditions Maathai was responding to. Not individual actions — design features of the suppressing institutions.',
@@ -9186,7 +9161,7 @@ Return only valid JSON with this shape:
     {
       id:'ebb-hanna-care', title:'Hanna Care Ethics Coach', category:'EBB Chapter Coach',
       purpose:'Apply care ethics to the Hanna/Iraq case. Practice the caring-for vs. caring-about distinction, name what coercion was targeting structurally, analyze what relational obligation survives under pressure, and bridge to your own specific caring obligations.',
-      tags:['Hanna','care ethics','relational obligation','Chapter 5','Week 6'],
+      tags:['Hanna','care ethics','relational obligation','Chapter 5','Chapter 5'],
       outputs:'Caring-for analysis, coercion targets, obligation under pressure, secondary framework, BioBond under care, meta-awareness, personal caring-for obligation.',
       steps:[
         'CHAPTER 5 — Complete after reading the chapter. Before beginning: slow down. Care ethics rewards attention to particulars. This guide has a different register from the Boisjoly and Maathai coaches — it asks for specific persons and specific relationships, not primarily structural analysis.\n\nCaring-for vs. caring-about: Identify the caring-for obligations in Father Hanna situation — the specific obligations generated by specific relationships with specific persons who had entrusted specific dimensions of their lives to his ministry. Then name what it would have meant to reduce those obligations to caring-about — a general concern for Christians in Iraq. What specifically would have been lost in that reduction?',
@@ -9580,7 +9555,7 @@ Return only valid JSON with this shape:
       return 'This coach helps turn a project into a map: central problem, contribution, audience, missing evidence, next section, and next research move. It is useful with Document Capsules and PRF profile context.';
     }
     if(id === 'ebb-prf-interpretation'){
-      return 'The PRF Interpretation Coach helps you work analytically with your PRF-22 profile — not accepting it as a verdict, but examining where it fits your actual experience and where it misses. The goal is to translate abstract foundation scores into lived vocabulary, name the blind spot that comes with your dominant foundation, and connect your profile to the course ethical traditions. This coach runs after you have imported your PRF-22 in Week 2. The meta-awareness step (Step 7) asks you to notice whether you have been producing an acceptable answer or doing genuine self-examination. The OS2 preparation question at the end points toward the social world rather than inward.';
+      return 'The PRF Interpretation Coach helps you work analytically with your PRF-22 profile — not accepting it as a verdict, but examining where it fits your actual experience and where it misses. The goal is to translate abstract foundation scores into lived vocabulary, name the blind spot that comes with your dominant foundation, and connect your profile to the course ethical traditions. This coach runs after you have imported your PRF-22 profile for Chapter 2. The meta-awareness step (Step 7) asks you to notice whether you have been producing an acceptable answer or doing genuine self-examination. The OS2 preparation question at the end points toward the social world rather than inward.';
     }
     if(id === 'ebb-field-scan-analysis'){
       return 'The Field Scan Analysis Coach interprets one of your saved Field Scans analytically. It asks you to distinguish what an institution formally claims to do from what it actually rewards, to name the suppression gap as structural rather than personal, to identify your BioBond sources as structural resources, and to name the specific design lever that would be required to close the gap. This coach recurs throughout the course — your second, third, and fourth Field Scans will each produce a new Guide Note that deepens the pattern. The final step asks you to create a Living Thread from what the scan surfaced.';
@@ -9963,9 +9938,9 @@ Return only valid JSON with this shape:
     setCoherencePulseHistory(demo.coherencePulse || []);
     clearPendingCapsule();
     try { localStorage.setItem(KEYS.mode, demo.mode); localStorage.setItem(KEYS.lastSaved, new Date().toISOString()); } catch(e) {}
-    showWorkspace('home');
+    showWorkspace('daily');
     renderAll();
-    alert('Fictional demo data loaded. Explore Home, Field Map, Moves, and Help to see the complete workflow.');
+    alert('Fictional demo data loaded. Explore Daily Practice, Twin, Field Map, Moves, and Memory / Export to see the complete workflow.');
   }
   window.loadDemoData = loadDemoData;
 
@@ -9984,7 +9959,7 @@ Return only valid JSON with this shape:
   }
 
   async function registerNavigatorPwa(){
-    if(!ENABLE_PWA){ setPwaStatus('wait', 'PWA off'); return; }
+    if(!ENABLE_PWA){ setPwaStatus('wait', 'PWA unavailable'); return; }
     if(!('serviceWorker' in navigator)){ setPwaStatus('bad', 'PWA unsupported'); return; }
     try{
       const reg = await navigator.serviceWorker.register('./sw.js');
@@ -10005,7 +9980,7 @@ Return only valid JSON with this shape:
   }
 
   async function clearPwaCache(){
-    if(!confirm('Clear cached PWA files and unregister service workers for this Navigator app? Your local Navigator memory is stored separately and should remain, but export JSON first if you want a backup.')) return;
+    if(!confirm('Refresh the installed app files for this Navigator? Your local Navigator memory is stored separately and should remain, but export JSON first if you want a backup.')) return;
     try{
       if('serviceWorker' in navigator){
         const regs = await navigator.serviceWorker.getRegistrations();
@@ -10015,10 +9990,10 @@ Return only valid JSON with this shape:
         const names = await caches.keys();
         await Promise.all(names.filter(n => /navigator|spc-navigator|workbox|app-shell/i.test(n)).map(n => caches.delete(n)));
       }
-      setPwaStatus('wait', 'PWA cache cleared');
-      alert('PWA cache cleared. Reload the page to fetch the newest files.');
+      setPwaStatus('wait', 'Installed app files refreshed');
+      alert('Installed app files refreshed. Reload the page to fetch the newest files.');
     } catch(e){
-      alert('Could not fully clear PWA cache: ' + e.message);
+      alert('Could not refresh installed app files: ' + e.message);
     }
   }
   window.clearPwaCache = clearPwaCache;
@@ -10036,7 +10011,7 @@ Return only valid JSON with this shape:
   window.NAV_PULSE_BUILD_4E4 = 'navigator-v3.6e.12-nav-pulse-4e4-countwords-double-lock';
 console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
 
-// ── NAV-PULSE-4E: Phase 1 ABCD Prompt Bank Integration ──
+// ── Navigator-4E: Phase 1 ABCD Prompt Bank Integration ──
   // Purpose: make Attend + ABCD prompts visibly present before writing,
   // not merely stored as placeholders or hidden prompt metadata.
   const PHENOM_FIELD_META_4E = [
@@ -10221,8 +10196,8 @@ console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
     const status = document.getElementById('phenom-prompt-status-4e');
     if(status){
       status.textContent = installed >= 5
-        ? 'NAV-PULSE-4E active: Attend + ABCD prompt cards are visible.'
-        : 'NAV-PULSE-4E warning: only ' + installed + ' prompt fields found.';
+        ? 'Navigator-4E active: Attend + ABCD prompt cards are visible.'
+        : 'Navigator-4E warning: only ' + installed + ' prompt fields found.';
     }
   }
   window.installPhenomenologyPhaseOnePrompts4E = installPhenomenologyPhaseOnePrompts4E;
@@ -10598,12 +10573,12 @@ console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
       { key:'Applications Coach',label:'Applications Coaches',cls:'' },
       { key:'Template Coach',    label:'Templates',           cls:'' },
     ];
-    const WEEK_MAP = {
-      'ebb-prf-interpretation':'Week 2',
-      'ebb-field-scan-analysis':'Week 3+',
-      'ebb-boisjoly-witness':'Week 4',
-      'ebb-maathai-liberation':'Week 5',
-      'ebb-hanna-care':'Week 6',
+    const CHAPTER_MAP = {
+      'ebb-prf-interpretation':'Chapter 2',
+      'ebb-field-scan-analysis':'Chapter 3+',
+      'ebb-boisjoly-witness':'Chapter 3',
+      'ebb-maathai-liberation':'Chapter 4',
+      'ebb-hanna-care':'Chapter 5',
     };
     const catalog = document.getElementById('coach-catalog');
     if(!catalog) return;
@@ -10614,11 +10589,11 @@ console.info('Navigator build loaded:', window.NAV_PULSE_BUILD_4E4);
       html += '<div class="coach-category-header ' + cat.cls + '">' + escapeHtml(cat.label) + '</div>';
       coaches.forEach(c => {
         const isEbb = cat.key === 'EBB Chapter Coach';
-        const week = WEEK_MAP[c.id] || '';
+        const chapter = CHAPTER_MAP[c.id] || '';
         html += '<div class="coach-card' + (isEbb ? ' ebb-coach' : '') + '" id="coach-card-' + c.id + '">'
           + '<div class="coach-card-top">'
           + '<span class="coach-cat-badge' + (isEbb ? ' ebb' : '') + '">' + escapeHtml(c.category.replace(' Coach','')) + '</span>'
-          + (week ? '<span class="coach-week-badge">' + escapeHtml(week) + '</span>' : '')
+          + (chapter ? '<span class="coach-chapter-badge">' + escapeHtml(chapter) + '</span>' : '')
           + '</div>'
           + '<div class="coach-title">' + escapeHtml(c.title) + '</div>'
           + '<div class="coach-purpose">' + escapeHtml((c.purpose||'').substring(0,120)) + (c.purpose && c.purpose.length > 120 ? '…' : '') + '</div>'
