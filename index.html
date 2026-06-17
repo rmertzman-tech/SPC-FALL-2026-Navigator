@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="navigator-build" content="navigator-fall-2026-mvp-v2" />
+  <meta name="navigator-build" content="navigator-fall-2026-mvp-v3-course-aligned" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Navigator — Ethics Beyond Boundaries</title>
@@ -1350,9 +1350,46 @@
       overflow: auto;
     }
 
+  
+    /* Fall 2026 v3 course-aligned polish */
+    .daily-primary-action {
+      margin-top: 14px;
+      border: 1px solid rgba(201,168,76,.34);
+      background:
+        radial-gradient(520px 220px at 0% 0%, rgba(201,168,76,.12), transparent 70%),
+        rgba(255,255,255,.035);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .daily-primary-action .btn.large {
+      font-size: 1rem;
+      padding: 13px 18px;
+      border-radius: 14px;
+      margin-top: 12px;
+    }
+    .secondary-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .secondary-action-row .btn {
+      opacity: .88;
+    }
+    .canvas-alignment-note {
+      border-left: 4px solid rgba(13,94,87,.65);
+      background: rgba(13,94,87,.08);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 12px 0;
+    }
+
   </style>
 </head>
 <body>
+  <!-- NAV-FALL-2026-17 v3 course-aligned polish -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <main id="main-content" class="app-shell" tabindex="-1">
@@ -1383,7 +1420,7 @@
         </div>
       </div>
       <div class="card-body">
-        <p>Your primary daily practice here is Phenomenology First — a brief reflection that helps you ground ethical attention in direct experience before jumping to judgment.</p>
+        <p>Your primary daily practice here is ABCD Daily Practice / Phenomenology First — a brief reflection that helps you ground ethical attention in direct experience before jumping to judgment, then notice Agency, Beauty/Awe, Context, and Dynamism.</p>
         <p>Your entries are stored locally in this browser unless you choose to export or sync them. The app does not automatically submit your private writing.</p>
         <p>Start with Daily Practice. Over the semester, your saved reflections can help build your Development Arc and prepare checkpoint exports for Canvas.</p>
         <div class="welcome-actions">
@@ -1412,35 +1449,34 @@
       <div class="card">
         <div class="card-header">
           <div class="eyebrow">Daily Practice</div>
-          <div class="card-title">Daily Practice: Phenomenology First</div>
-          <div class="card-desc">Begin with what you are actually experiencing.</div>
+          <div class="card-title">ABCD Daily Practice / Phenomenology First</div>
+          <div class="card-desc">Begin with what you are actually experiencing. Notice before judging, then use ABCD to name what matters.</div>
         </div>
         <div class="card-body">
           <div class="privacy-banner">
             <strong>Saved locally in this browser. Not submitted automatically.</strong>
-            <div>The goal is not to produce the “right” answer. The goal is to notice before you judge. Your reflection stays private unless you choose to save, export, or sync it.</div>
+            <div>
+              The goal is not to produce the “right” answer. The goal is to notice before judging, then use ABCD — Agency, Beauty/Awe, Context, and Dynamism — to name what matters.
+            </div>
           </div>
 
-          <div class="fall2026-card-grid">
-            <div class="welcome-choice">
-              <strong>Phenomenology First</strong>
-              <span>A fuller daily reflection that begins with lived experience before translating it into coherence signals.</span>
-              <div class="toolbar">
-                <button class="btn small primary" type="button" onclick="showWorkspace('phenom')">Start Phenomenology First</button>
-              </div>
-            </div>
+          <div class="daily-primary-action">
+            <div class="start-hero-title">Begin today’s ABCD Daily Practice.</div>
+            <p class="start-hero-text">
+              Phenomenology First starts with direct experience, then helps you translate what you notice into the course’s ABCD frame.
+            </p>
+            <button class="btn primary large" type="button" onclick="showWorkspace('phenom')">Begin ABCD Daily Practice</button>
+          </div>
 
-            <div class="welcome-choice">
-              <strong>Quick Coherence Check</strong>
-              <span>A short version of Daily Practice for days when you only have a few minutes.</span>
-              <div class="toolbar">
-                <button class="btn small ghost" type="button" onclick="showWorkspace('pulse')">Open Quick Coherence Check</button>
-              </div>
-            </div>
+          <div class="secondary-action-row" aria-label="Secondary Daily Practice actions">
+            <button class="btn small ghost" type="button" onclick="showWorkspace('pulse')">Quick Coherence Check</button>
+            <button class="btn small ghost" type="button" onclick="showWorkspace('start')">Start Here</button>
+            <button class="btn small ghost" type="button" onclick="showWorkspace('twin'); startTwin();">Talk with My Twin</button>
+            <button class="btn small ghost" type="button" onclick="showWorkspace('moves')">Choose One Move</button>
           </div>
 
           <div class="workspace-note" style="margin-top:14px;">
-            Most days, begin here. Use the Twin when you want to think something through. Use Memory / Export when your instructor asks for a Canvas checkpoint.
+            Most days, begin with ABCD Daily Practice. Use Coherence Check only when you need the quick version. Use Memory / Export when your instructor asks for a Canvas checkpoint.
           </div>
         </div>
       </div>
@@ -1498,15 +1534,16 @@
         </div>
         <div class="card-body">
           <div class="start-hero">
-            <div class="start-hero-title">Where are you today, and what is one small step toward coherence?</div>
-            <p class="start-hero-text">You do not need to understand the whole app at once. If you are new, begin with <strong>Start Here</strong>. If you are returning, use Phenomenology First, Coherence Check, Twin, Threads, Field Map, or Moves to continue where your life is actually happening.</p>
+            <div class="start-hero-title">Begin with ABCD Daily Practice.</div>
+            <p class="start-hero-text">
+              This older workspace is kept for compatibility, but the Fall 2026 student pathway begins with ABCD Daily Practice / Phenomenology First.
+            </p>
             <div class="quick-actions" style="margin-top:14px;">
-              <button class="btn small primary" type="button" onclick="openFirstSession()">Begin My First Navigator Session</button>
-              <button class="btn small ghost" type="button" onclick="showWorkspace('start')">Start Here: 10-minute path</button>
-              <button class="btn small primary" type="button" onclick="showWorkspace('phenom')">Begin Phenomenology First</button>
-              <button class="btn small ghost" type="button" onclick="showWorkspace('pulse')">Open Coherence Check</button>
+              <button class="btn small primary" type="button" onclick="showWorkspace('phenom')">Begin ABCD Daily Practice</button>
+              <button class="btn small ghost" type="button" onclick="showWorkspace('daily')">Return to Daily Practice</button>
+              <button class="btn small ghost" type="button" onclick="showWorkspace('pulse')">Quick Coherence Check</button>
               <button class="btn small ghost" type="button" onclick="showWorkspace('twin'); startTwin();">Talk with My Twin</button>
-              <button class="btn small purple" type="button" onclick="showWorkspace('moves')">Choose One Move</button>
+              <button class="btn small ghost" type="button" onclick="showWorkspace('moves')">Choose One Move</button>
             </div>
           </div>
           <div class="confidence-note"><strong>This is not a test.</strong> Small honest entries are better than polished performances. You are building a map, not proving that you already know the territory.</div>
@@ -1751,9 +1788,9 @@
         <main class="workspace-stack">
           <section class="card">
             <div class="card-header">
-              <div class="eyebrow">Phenomenology First</div>
-              <h2 class="card-title">Daily Inquiry Path</h2>
-              <div class="card-desc">Begin with lived appearance, then translate that reflection into a provisional coherence signal. This is the primary daily practice; Coherence Check is the quick shortcut. Nothing here is a diagnosis or grade.</div>
+              <div class="eyebrow">ABCD Daily Practice</div>
+              <h2 class="card-title">Phenomenology First</h2>
+              <div class="card-desc">Begin with lived appearance, then use ABCD — Agency, Beauty/Awe, Context, and Dynamism — to name what matters. This is the primary daily practice; Coherence Check is the quick shortcut. Nothing here is a diagnosis or grade.</div>
             </div>
             <div class="card-body">
               <div class="privacy-note"><strong>Private by default:</strong> this entry stays in this browser unless you export it, copy a receipt, or choose to send selected content to the Twin. Your instructor can invite use of this tool, but the private text is not submitted automatically. The first phase is written reflection; the second phase is your own translation of that reflection into seven coherence signals.</div>
@@ -1761,7 +1798,7 @@
               <div id="phenom-prompt-status-4e" class="status-line"></div>
 
               <div class="language-panel">
-                <div class="language-panel-title">Phase 1 — Phenomenological Encounter</div>
+                <div class="language-panel-title">Phase 1 — ABCD Phenomenological Encounter</div>
                 <p class="language-panel-text">Do not begin with a score. Begin by noticing what is present before explanation. Short responses are fine; you control how much to write.</p>
                 <div class="field">
                   <label for="phenom-attend">Attend — before explanation</label>
@@ -1901,8 +1938,8 @@
               <div class="bar"><div id="coherence-fill" class="bar-fill"></div></div>
             </div>
             <div class="stage-box">
-              <div id="stage-name" class="stage-name">Empty Twin</div>
-              <div id="stage-text" class="stage-text">Your Twin is waiting to learn its first pattern.</div>
+              <div id="stage-name" class="stage-name">New Twin</div>
+              <div id="stage-text" class="stage-text">Your Twin is ready. As you save reflections, it can help you notice recurring patterns in your attention, values, pressures, and possible next moves.</div>
             </div>
             <div class="coverage-list" id="coverage-list"></div>
             <div class="privacy-note">Memory is stored in this browser using localStorage. Use the always-visible Memory / Export controls below before changing devices or sharing a computer.</div>
@@ -2165,10 +2202,10 @@
             <div class="first-session-form">
               <label>Checkpoint
                 <select id="maturity-snapshot-checkpoint" onchange="generateMaturitySnapshotPreview()">
-                  <option value="Week 4 / Snapshot 1">Week 4 / Snapshot 1</option>
-                  <option value="Week 8 / Midterm Snapshot 2">Week 8 / Midterm Snapshot 2</option>
-                  <option value="Week 12 / Snapshot 3">Week 12 / Snapshot 3</option>
-                  <option value="Week 15 / Final Snapshot 4">Week 15 / Final Snapshot 4</option>
+                  <option value="Chapter 3 Checkpoint">Chapter 3 Checkpoint</option>
+                  <option value="Chapter 6 Checkpoint">Chapter 6 Checkpoint</option>
+                  <option value="Chapter 9 Checkpoint">Chapter 9 Checkpoint</option>
+                  <option value="Chapter 12 Final Checkpoint">Chapter 12 Final Checkpoint</option>
                   <option value="Custom Checkpoint">Custom Checkpoint</option>
                 </select>
               </label>
@@ -2179,6 +2216,7 @@
                 <textarea id="maturity-snapshot-note" style="min-height:110px;" placeholder="Optional. Example: I used the Navigator most after class discussions. My next step is one Field Scan and one Witness Coach session." oninput="generateMaturitySnapshotPreview()"></textarea>
               </label>
               <div class="privacy-note"><strong>Privacy boundary:</strong> the snapshot reports engagement counts, maturity stage, and your optional note. It does not include private Navigator content unless you type it into the note yourself.</div>
+              <div class="canvas-alignment-note"><strong>Canvas alignment:</strong> choose the chapter checkpoint named in Canvas. Different sections may reach chapters at different times, so use the date range your instructor assigns.</div>
               <label>Snapshot preview for Canvas text entry
                 <textarea id="maturity-snapshot-preview" style="min-height:360px;" placeholder="Click Generate Snapshot to build your Canvas-ready checkpoint text."></textarea>
               </label>
@@ -2198,26 +2236,27 @@
           <div class="card-header">
             <div class="card-title">Student Reflection Export</div>
             <div class="card-desc">Create an assignment-ready reflection from selected Navigator work without exposing raw Twin conversations, full PRF JSON, Document Capsules, or private memory. Review before submitting anything.</div>
-            <details class="help-note"><summary>What is this?</summary><div class="help-note-body"><p>This is a privacy-preserving output tool. It helps students turn Pulse, Twin Journal insights, Field Scans, Living Threads, Move Cards, and Capability Engine work into a clean reflection. It is not the full Navigator backup. Use JSON export for backup; use Student Reflection Export for classroom or personal sharing.</p></div></details>
+            <details class="help-note"><summary>What is this?</summary><div class="help-note-body"><p>This is a privacy-preserving output tool. It helps students turn Daily Practice, Twin Journal insights, Field Scans, Living Threads, Move Cards, and Development Arc work into a clean reflection. It is not the full Navigator backup. Use JSON export for backup; use Student Reflection Export for classroom or personal sharing.</p></div></details>
           </div>
           <div class="card-body">
             <div class="first-session-form">
               <label>Output type
                 <select id="student-output-template" onchange="generateStudentOutputPreview()">
-                  <option value="first_map">My First Navigator Map</option>
-                  <option value="ebb_reflection">EBB Reflection: Self, Field, Agency</option>
-                  <option value="field_move">Field Scan + Current Move Reflection</option>
-                  <option value="capability_learning">Capability Engine Learning Reflection</option>
+                  <option value="first_map">Chapter 1–2: Chapter 1–2: My First Navigator Map</option>
+                  <option value="field_move">Chapter 3: Field Scan Export</option>
+                  <option value="ebb_reflection">Chapter 6–9: Ethical Lens and Move Reflection</option>
+                  <option value="capability_learning">Chapter 12: Development Arc Reflection</option>
                 </select>
               </label>
               <div class="privacy-note"><strong>Privacy default:</strong> this output omits raw chat, full Document Capsules, raw PRF-22 JSON, and private backup data. It summarizes patterns and selected saved items only.</div>
+              <div class="canvas-alignment-note"><strong>Canvas alignment:</strong> choose the export type that matches the Canvas assignment or chapter checkpoint your instructor named.</div>
               <div class="microhelp-grid">
                 <label class="microhelp-item"><input id="out-include-pulse" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Pulse summary</label>
                 <label class="microhelp-item"><input id="out-include-insight" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include selected Twin Journal insight</label>
                 <label class="microhelp-item"><input id="out-include-thread" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Living Thread summary</label>
                 <label class="microhelp-item"><input id="out-include-field" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Field Scan summary</label>
                 <label class="microhelp-item"><input id="out-include-move" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Move / Current Move</label>
-                <label class="microhelp-item"><input id="out-include-capability" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Capability Engine learning</label>
+                <label class="microhelp-item"><input id="out-include-capability" type="checkbox" checked onchange="generateStudentOutputPreview()" /> Include Development Arc learning</label>
               </div>
               <label>Preview / edit before copying or downloading
                 <textarea id="student-output-preview" style="min-height:360px;" placeholder="Click Generate Reflection Output to build a private-safe draft."></textarea>
@@ -2254,8 +2293,8 @@
 
         <div class="card" style="margin-top:18px;">
           <div class="card-header">
-            <div class="card-title">PRF-22 / E-Twin Profile</div>
-            <div class="card-desc">Import a PRF-22 JSON profile as a local-first ethical-perception baseline. The profile is treated as a hypothesis, not a verdict.</div>
+            <div class="card-title">Import Your Philosophical Profile (PRF-22)</div>
+            <div class="card-desc">Use this after completing the Orientation profile. Importing your profile helps the Navigator connect your reflections with your starting moral lens. The profile is treated as a hypothesis, not a verdict.</div>
             <details class="help-note"><summary>What is this?</summary><div class="help-note-body"><p>The PRF-22 profile can seed the Twin with a starting map of moral foundations, reasoning style, ATCF/coherence indicators, trust orientation, and growth questions. Navigator stores it locally and sends only a brief summary to the backend when you allow it to be included in Twin context.</p></div></details>
           </div>
           <div class="card-body">
@@ -2683,7 +2722,7 @@
           <div class="card-header">
             <div class="eyebrow">Stable feature build package</div>
             <div class="card-title">Navigator NAV-IMPORT-1E — Critical Thinking Mini-Lab Display Support</div>
-            <div class="card-desc">This build preserves Living Threads, PWA installability, phone/laptop merge, Co-Living Twin behavior, the Capability Engine Guided Introduction, Start Here, Pulse scoring anchors, experience-first language, Guided First Session, and Student Reflection Export while adding a first accessibility and visual polish pass.</div>
+            <div class="card-desc">This build preserves Living Threads, PWA installability, phone/laptop merge, Co-Living Twin behavior, the Development Arc Guided Introduction, Start Here, Pulse scoring anchors, experience-first language, Guided First Session, and Student Reflection Export while adding a first accessibility and visual polish pass.</div>
           </div>
           <div class="card-body">
             <div class="accessibility-card">
@@ -2711,7 +2750,7 @@
                 <div class="glossary-item"><strong>Move</strong><span>The next concrete action small enough to begin, not a complete life plan.</span></div>
                 <div class="glossary-item"><strong>Living Thread</strong><span>Something you tend across time: a relationship, fear, commitment, practice, question, project, or source of meaning.</span></div>
                 <div class="glossary-item"><strong>BioBond</strong><span>A person, practice, place, memory, or community that helps your agency remain coherent under pressure.</span></div>
-                <div class="glossary-item"><strong>Daily Pulse</strong><span>A daily self-reading of the conditions supporting agency, not a medical reading or grade.</span></div>
+                <div class="glossary-item"><strong>Daily Practice / Coherence Check</strong><span>A daily self-reading of the conditions supporting agency, not a medical reading or grade.</span></div>
                 <div class="glossary-item"><strong>Context Assembly</strong><span>The practice of seeing what your different fields create together as one real-life situation.</span></div>
                 <div class="glossary-item"><strong>Twin</strong><span>A reflective companion that helps you hear, revise, and deepen what you are trying to say about yourself and your situation.</span></div>
               </div>
@@ -3601,7 +3640,7 @@ This checkpoint is a student-generated engagement snapshot. It is not an automat
   window.setTwinMode = setTwinMode;
 
   function getStage(journalCount){
-    if(journalCount <= 0) return { name:'Empty Twin', text:'Your Twin is waiting to learn its first pattern.' };
+    if(journalCount <= 0) return { name:'New Twin', text:'Your Twin is ready. As you save reflections, it can help you notice recurring patterns in your attention, values, pressures, and possible next moves.' };
     if(journalCount < 4) return { name:'Listening Twin', text:'It is beginning to gather fragments but should mostly listen.' };
     if(journalCount < 8) return { name:'Pattern-Noticing Twin', text:'It can begin reflecting tentative patterns, without claiming certainty.' };
     if(journalCount < 14) return { name:'Coherence-Building Twin', text:'It can begin connecting themes across time, values, memory, and action.' };
@@ -4037,6 +4076,7 @@ async function handleImportPrf22File(event){
   function getActiveWorkspace(){
     try {
       const saved = localStorage.getItem(KEYS.workspace) || 'daily';
+      if(saved === 'home') return 'daily';
       return WORKSPACES.includes(saved) ? saved : 'daily';
     } catch(e) { return 'daily'; }
   }
@@ -4204,7 +4244,7 @@ async function handleImportPrf22File(event){
     const nextHint = planMatchesCurrent ? 'Review current move plan' : currentMove ? 'Create current move plan' : moves.length ? 'Compare saved moves' : scans.length ? 'Generate first Move Cards' : 'Create a first Field Scan';
     const cards = [
       ['Twin stage', stage.name, journal.length + ' journal entries · ' + Math.min(100, Math.round((journal.length/14)*100)) + '% coherence path'],
-      ['Daily Pulse', pulseSummary.count ? (pulseSummary.latest.avg + ' / 5') : 'not yet', pulseSummary.count ? ('Lowest: ' + pulseSummary.lowest.label + ' · Trend: ' + pulseSummary.trend) : 'Open Coherence Check for seven quick coherence signals.'],
+      ['Daily Practice / Coherence Check', pulseSummary.count ? (pulseSummary.latest.avg + ' / 5') : 'not yet', pulseSummary.count ? ('Lowest: ' + pulseSummary.lowest.label + ' · Trend: ' + pulseSummary.trend) : 'Open Coherence Check for seven quick coherence signals.'],
       ['Phenomenology First', getPhenomenologyPulseHistory().length ? (getPhenomenologyPulseHistory().length + ' entries') : 'not yet', getPhenomenologyPulseHistory().length ? 'Latest entry can bridge to Twin or SAGE.' : 'Begin here: lived appearance first, coherence translation second.'],
       ['Memory', capsules.length + ' capsules', 'Export JSON before changing devices or browsers.'],
       ['PRF-22 Profile', prfProfile ? 'imported' : 'optional', prfProfile ? truncateText(prfProfile.summary || 'Profile baseline available', 96) : 'Import an E-Twin JSON baseline when available.'],
@@ -4349,7 +4389,7 @@ async function handleImportPrf22File(event){
       abcThought: String(entry.abcThought || '').slice(0, 1000)
     };
   }
-// ── NAV-PULSE-3: Standalone Daily Pulse Import Adapter ──
+// ── NAV-PULSE-3: Standalone Daily Practice / Coherence Check Import Adapter ──
 
 function isStandaloneDailyPulseJSON(data){
   return !!(
@@ -4396,7 +4436,7 @@ function dailyPulseToCoherencePulseEntry(pulse){
     : dateObj.toLocaleDateString([], { month:'short', day:'numeric' });
 
   const note = [
-    'Imported from Daily Pulse: Phenomenology First.',
+    'Imported from Daily Practice / Coherence Check: Phenomenology First.',
     '',
     'Attend: ' + attend,
     '',
@@ -4417,7 +4457,7 @@ function dailyPulseToCoherencePulseEntry(pulse){
     prompts.D || prompts.dynamic ? 'Dynamic prompt: ' + (prompts.D || prompts.dynamic) : ''
   ].filter(Boolean).join('\n').slice(0, 1500);
 
-  // Standalone Daily Pulse is qualitative, not a 0–5 slider pulse.
+  // Standalone Daily Practice / Coherence Check is qualitative, not a 0–5 slider pulse.
   // Use neutral scores so we do not invent a diagnostic score.
   const scores = {};
   COHERENCE_PULSE_DOMAINS.forEach(d => { scores[d.key] = 3; });
@@ -4460,7 +4500,7 @@ function importStandaloneDailyPulseJSON(pulse){
   );
 
   if(alreadyExists){
-    alert('This Daily Pulse already appears to be imported.');
+    alert('This Daily Practice / Coherence Check already appears to be imported.');
     return null;
   }
 
@@ -4475,7 +4515,7 @@ function importStandaloneDailyPulseJSON(pulse){
   if(typeof renderMaturitySnapshotPanel === 'function') renderMaturitySnapshotPanel();
   if(typeof renderWorkspaceDashboard === 'function') renderWorkspaceDashboard();
 
-  alert('Imported Daily Pulse for ' + (pulse.dateKey || entry.dateLabel) + '. It was added to the Navigator Daily Pulse history.');
+  alert('Imported Daily Practice / Coherence Check for ' + (pulse.dateKey || entry.dateLabel) + '. It was added to the Navigator Daily Practice / Coherence Check history.');
   return entry;
 }
   function averagePulseScores(scores){
@@ -4866,7 +4906,7 @@ function importStandaloneDailyPulseJSON(pulse){
       body = '<div class="first-session-step-card"><div class="first-session-step-title">Step 6: Choose One Small Move</div><div class="first-session-step-text">A move is not your whole life plan. It is the next concrete step small enough to begin and honest enough to matter.</div><div class="first-session-form"><label>Move title<input id="fs-move-title" placeholder="Example: Protect one hour for meaningful work" /></label><label>First action<textarea id="fs-move-action" placeholder="What exactly could you do first?"></textarea></label><label>Why does this preserve agency?<textarea id="fs-move-why"></textarea></label><label>What support would help?<textarea id="fs-move-support"></textarea></label></div><div class="quick-actions"><button class="btn small primary" type="button" onclick="firstSessionSaveMove()">Save Small Move</button><button class="btn small ghost" type="button" onclick="setFirstSessionStep(6)">See My First Map</button></div></div>';
     } else {
       const s = firstSessionLatestSummary();
-      body = '<div class="first-session-step-card"><div class="first-session-step-title">My First Navigator Map</div><div class="first-session-step-text">This is not a final identity. It is a first map that your Twin can return to with you.</div><div class="first-session-summary"><div class="first-session-summary-item"><strong>Today’s Pulse</strong>' + escapeHtml(s.pulse) + '</div><div class="first-session-summary-item"><strong>One Twin signal</strong>' + escapeHtml(truncateText(s.twin, 180)) + '</div><div class="first-session-summary-item"><strong>One insight</strong>' + escapeHtml(s.insight) + '</div><div class="first-session-summary-item"><strong>Living Thread</strong>' + escapeHtml(s.thread) + '</div><div class="first-session-summary-item"><strong>Field</strong>' + escapeHtml(s.field) + '</div><div class="first-session-summary-item"><strong>Small Move</strong>' + escapeHtml(s.move) + '</div></div><div class="quick-actions" style="margin-top:14px;"><button class="btn small primary" type="button" onclick="askTwinAboutFirstSessionMap()">Ask Twin About This Map</button><button class="btn small ghost" type="button" onclick="exportTwinJournal(\'json\')">Export JSON Backup</button><button class="btn small primary" type="button" onclick="showStudentOutputPanel()">Create Student Reflection Output</button><button class="btn small ghost" type="button" onclick="showWorkspace(\'home\')">Return Home</button></div></div>';
+      body = '<div class="first-session-step-card"><div class="first-session-step-title">Chapter 1–2: My First Navigator Map</div><div class="first-session-step-text">This is not a final identity. It is a first map that your Twin can return to with you.</div><div class="first-session-summary"><div class="first-session-summary-item"><strong>Today’s Pulse</strong>' + escapeHtml(s.pulse) + '</div><div class="first-session-summary-item"><strong>One Twin signal</strong>' + escapeHtml(truncateText(s.twin, 180)) + '</div><div class="first-session-summary-item"><strong>One insight</strong>' + escapeHtml(s.insight) + '</div><div class="first-session-summary-item"><strong>Living Thread</strong>' + escapeHtml(s.thread) + '</div><div class="first-session-summary-item"><strong>Field</strong>' + escapeHtml(s.field) + '</div><div class="first-session-summary-item"><strong>Small Move</strong>' + escapeHtml(s.move) + '</div></div><div class="quick-actions" style="margin-top:14px;"><button class="btn small primary" type="button" onclick="askTwinAboutFirstSessionMap()">Ask Twin About This Map</button><button class="btn small ghost" type="button" onclick="exportTwinJournal(\'json\')">Export JSON Backup</button><button class="btn small primary" type="button" onclick="showStudentOutputPanel()">Create Student Reflection Output</button><button class="btn small ghost" type="button" onclick="showWorkspace(\'home\')">Return Home</button></div></div>';
     }
     box.innerHTML = '<div class="first-session-header"><div><div class="eyebrow">First-session flow</div><div class="first-session-title">Step ' + (step === 6 ? 'summary' : (step + 1) + ' of 6') + '</div><div class="first-session-subtitle">Complete what is useful today. You can leave and return at any time.</div></div><div class="pill"><span class="dot ok"></span>' + done + ' / 6 complete</div></div><div class="first-session-progress"><div class="bar"><div class="bar-fill" style="width:' + pct + '%"></div></div><div class="first-session-steps">' + chips + '</div></div>' + body;
   }
@@ -4924,7 +4964,7 @@ function importStandaloneDailyPulseJSON(pulse){
     if(chart){
       const history = getCoherencePulseHistory().slice(-14);
       if(!history.length){
-        chart.innerHTML = '<div style="color:var(--muted);font-style:italic;align-self:center;">No readings yet. Complete your first Daily Pulse above.</div>';
+        chart.innerHTML = '<div style="color:var(--muted);font-style:italic;align-self:center;">No readings yet. Complete your first Daily Practice / Coherence Check above.</div>';
       } else {
         chart.innerHTML = history.map(e => {
           const h = Math.round(((Number(e.avg) || averagePulseScores(e.scores)) / 5) * 96) + 8;
@@ -4937,7 +4977,7 @@ function importStandaloneDailyPulseJSON(pulse){
       const allHistory = getCoherencePulseHistory().slice().reverse();
       const history = (pulseHistoryExpanded ? allHistory : allHistory.slice(0, 5));
       if(!allHistory.length){
-        list.innerHTML = '<div class="status-line">No Daily Pulse history yet.</div>';
+        list.innerHTML = '<div class="status-line">No Daily Practice / Coherence Check history yet.</div>';
       } else {
         const entries = history.map(e => {
           const low = getLowestPulseDomain(e.scores);
@@ -6869,7 +6909,7 @@ Return only valid JSON with this exact shape:
 
   function latestPulseTextForOutput(){
     const latest = latestOrNull(getCoherencePulseHistory());
-    if(!latest) return 'No Daily Pulse has been saved yet.';
+    if(!latest) return 'No Daily Practice / Coherence Check has been saved yet.';
     const low = getPulseLowestSignal(latest);
     const lowText = low ? (low.label + ' = ' + low.value + '/5') : 'not available';
     const high = getPulseHighestSignal(latest);
@@ -6916,7 +6956,7 @@ Return only valid JSON with this exact shape:
     const latestReflection = latestKey ? reflections[latestKey] : '';
     let mapper = '';
     try { mapper = JSON.stringify(buildSituationMapperInput(), null, 2); } catch(e) { mapper = ''; }
-    return 'Capability Engine progress: ' + completedCount + ' of 5 guided lessons marked complete. Latest reflection: ' + (latestReflection || 'No guided reflection saved yet.') + (mapper ? '\nSituation Mapper preview:\n' + mapper : '');
+    return 'Development Arc learning progress: ' + completedCount + ' of 5 guided lessons marked complete. Latest reflection: ' + (latestReflection || 'No guided reflection saved yet.') + (mapper ? '\nSituation Mapper preview:\n' + mapper : '');
   }
 
   function buildStudentReflectionOutput(template){
@@ -6925,34 +6965,40 @@ Return only valid JSON with this exact shape:
     const sections = [];
     sections.push('Navigator Student Reflection Export');
     sections.push('Generated: ' + now);
-    sections.push('Template: ' + (template || 'first_map'));
+    const templateLabels = {
+      first_map: 'Chapter 1–2: Chapter 1–2: My First Navigator Map',
+      field_move: 'Chapter 3: Field Scan Export',
+      ebb_reflection: 'Chapter 6–9: Ethical Lens and Move Reflection',
+      capability_learning: 'Chapter 12: Development Arc Reflection'
+    };
+    sections.push('Template: ' + (templateLabels[template] || templateLabels.first_map));
     sections.push('Privacy note: This draft intentionally omits raw Twin conversation, full PRF-22 JSON, Document Capsule contents, and full private backup memory. Review and edit before sharing or submitting.');
     sections.push('');
 
     if(template === 'ebb_reflection'){
-      sections.push('Core Reflection: Self, Field, and Agency');
+      sections.push('Chapter 6–9: Ethical Lens and Move Reflection');
       sections.push('In this Navigator work, I am treating ethics as more than choosing an answer. I am noticing my own agency conditions, the field pressures shaping my choices, and the supports that help me remain coherent enough to act responsibly.');
       sections.push('');
-      if(checkedOutput('out-include-pulse')) sections.push('1. Daily Pulse\n' + latestPulseTextForOutput());
+      if(checkedOutput('out-include-pulse')) sections.push('1. Daily Practice / Coherence Check\n' + latestPulseTextForOutput());
       if(checkedOutput('out-include-insight')) sections.push('2. Self-Knowledge / PRF Signal\n' + latestJournalInsightTextForOutput());
       if(checkedOutput('out-include-field')) sections.push('3. Field and Suppression Gap\n' + latestFieldTextForOutput());
       if(checkedOutput('out-include-thread')) sections.push('4. Living Thread / What I am tending\n' + latestThreadTextForOutput());
       if(checkedOutput('out-include-move')) sections.push('5. Agency-Preserving Move\n' + currentMoveTextForOutput());
-      if(checkedOutput('out-include-capability')) sections.push('6. Capability Engine Connection\n' + capabilityLearningTextForOutput());
+      if(checkedOutput('out-include-capability')) sections.push('6. Development Arc Connection\n' + capabilityLearningTextForOutput());
       sections.push('Reflection to complete in my own words: What does this show about the relationship between my personal reality framework, my environment, and the kind of action that is possible for me right now?');
     } else if(template === 'field_move'){
-      sections.push('Field Scan + Current Move Reflection');
+      sections.push('Chapter 3: Field Scan Export');
       if(checkedOutput('out-include-field')) sections.push('Field\n' + latestFieldTextForOutput());
       if(checkedOutput('out-include-move')) sections.push('Move\n' + currentMoveTextForOutput());
       sections.push('Reflection to complete in my own words: What is one pressure this field creates, one support that helps me stay coherent, and one small move that preserves future agency?');
     } else if(template === 'capability_learning'){
-      sections.push('Capability Engine Learning Reflection');
+      sections.push('Chapter 12: Development Arc Reflection');
       if(checkedOutput('out-include-capability')) sections.push(capabilityLearningTextForOutput());
-      if(checkedOutput('out-include-pulse')) sections.push('Pulse connection\n' + latestPulseTextForOutput());
+      if(checkedOutput('out-include-pulse')) sections.push('Daily Practice connection\n' + latestPulseTextForOutput());
       if(checkedOutput('out-include-field')) sections.push('Field connection\n' + latestFieldTextForOutput());
       sections.push('Reflection to complete in my own words: How do movement/exit, refusal/dissent, and social reconfiguration/redesign affect agency in this situation? Where is functional equivalence or an OS2 bridge possible?');
     } else {
-      sections.push('My First Navigator Map');
+      sections.push('Chapter 1–2: My First Navigator Map');
       sections.push('Today\'s Pulse: ' + first.pulse);
       sections.push('One Twin signal: ' + first.twin);
       sections.push('One insight: ' + first.insight);
@@ -7289,7 +7335,7 @@ Return only valid JSON with this exact shape:
         + getMoveCards().map((m,i) => (i+1) + '. ' + (m.title || 'Move Card') + ' | Field: ' + (m.fieldTitle || 'unknown') + ' | Status: ' + (m.status || 'saved') + '\nFirst action: ' + (m.firstAction || '') + '\nPreserves: ' + (m.whatPreserves || '') + '\nRisks: ' + (m.whatRisks || '')).join('\n\n')
         + '\n\n--- Living Threads ---\n'
         + formatLivingThreadsForText(getLivingThreads())
-        + '\n\n--- Capability Engine Guided Introduction ---\n'
+        + '\n\n--- Development Arc Guided Introduction ---\n'
         + formatCapabilityLessonProgressForText(getCapabilityLessonProgress())
         + '\n\n--- Guide Notes ---\n'
         + getCoachNotes().map((n,i) => (i+1) + '. ' + (n.title || 'Guide Note') + ' [' + (n.coachTitle || n.coachId || 'coach') + ']\n' + (n.summary || '') + '\n' + (n.structuredText || '')).join('\n\n')
@@ -9235,8 +9281,8 @@ Return only valid JSON with this shape:
       steps:['State the project and intended audience.','Identify the central thesis or problem.','Name the strongest contribution.','Identify missing evidence or conceptual gaps.','Choose the next section or next research move.','Suggest which documents should become capsules.']
     },
     {
-      id:'capability-engine', title:'Capability Engine Coach', category:'Applications Coach',
-      purpose:'Teach the Capability Engine through a five-lesson guided introduction, then translate it into practical Navigator use: status discipline, Three Freedoms scoring, EBB case analysis, functional equivalence, and simulation-ready variables.',
+      id:'capability-engine', title:'Development Arc Coach', category:'Applications Coach',
+      purpose:'Teach the Development Arc through a five-lesson guided introduction, then translate it into practical Navigator use: status discipline, Three Freedoms scoring, EBB case analysis, functional equivalence, and simulation-ready variables.',
       tags:['agency','EBB','simulation'],
       outputs:'Lesson reflections, status map, Three Freedoms scores, capability/freedom diagnosis, stress-coherence map, functional-equivalence bridge, Navigator actions, Situation Mapper input.',
       steps:['Complete one guided Learn / Reflect / Apply lesson if the vocabulary is new.','Name the situation, course case, workplace pressure, research issue, or life field you want to examine.','Practice formal status discipline by classifying one claim as evidence, formal analogy/modeling hypothesis, pedagogical metaphor, or user-specific inference.','Score the three capability freedoms: movement/exit, refusal/dissent, and social reconfiguration/redesign.','Connect stress, Pulse signals, Field Scans, and ATCF/coherence preservation without making clinical claims.','Identify OS2 or functional-equivalence bridges across different PRFs.','Translate the insight into one Navigator action: Field Scan, Living Thread, Move Card, Current Move, Document Capsule, or Twin conversation.','Prepare situation-mapper variables for future UCP/PA simulation work.']
@@ -9270,7 +9316,7 @@ Return only valid JSON with this shape:
       id:'agency-capability',
       title:'1. Agency Is a Capability, Not Just a Trait',
       shortTitle:'Agency as capability',
-      learn:'Agency is not simply willpower or personality. In Navigator language, agency is a capability that depends on the person, their PRF, their body state, available information, relationships, institutions, time pressure, and possible routes for action. The Capability Engine asks: what makes action possible here, and what blocks or suppresses it?',
+      learn:'Agency is not simply willpower or personality. In Navigator language, agency is a capability that depends on the person, their PRF, their body state, available information, relationships, institutions, time pressure, and possible routes for action. The Development Arc asks: what makes action possible here, and what blocks or suppresses it?',
       reflect:'Name one situation where you first judged yourself as lacking discipline, courage, or clarity. What field conditions may also have shaped what was possible?',
       apply:'Create a Journal seed or Field Scan that separates personal capacity from field conditions. Do not excuse or blame; map the conditions that route or suppress agency.',
       prompt:'I am learning that agency is a capability, not just a trait. Help me examine one situation by separating my own PRF, my body/stress state, and the field conditions that made action easier or harder.'
@@ -9279,7 +9325,7 @@ Return only valid JSON with this shape:
       id:'three-freedoms',
       title:'2. The Three Freedoms and Your Field',
       shortTitle:'Three Freedoms',
-      learn:'The Capability Engine begins with three practical freedoms: Movement / Exit Freedom, Refusal / Dissent Freedom, and Social Reconfiguration / Redesign Freedom. These are not abstract ideals. They ask whether the agent can move, pause or disagree, and reshape the situation enough for better action to become possible.',
+      learn:'The Development Arc begins with three practical freedoms: Movement / Exit Freedom, Refusal / Dissent Freedom, and Social Reconfiguration / Redesign Freedom. These are not abstract ideals. They ask whether the agent can move, pause or disagree, and reshape the situation enough for better action to become possible.',
       reflect:'In your current school, work, family, research, or health field, which freedom is lowest: movement, refusal, or redesign? What score from 0 to 5 would you give it?',
       apply:'Use the EBB Capability Practice panel to score the Three Freedoms. Then generate the Situation Mapper preview and use its continuation question.',
       prompt:'Help me score my Three Freedoms in one situation: movement/exit, refusal/dissent, and redesign/reconfiguration. Then help me identify the lowest freedom and one reversible next move.'
@@ -9289,8 +9335,8 @@ Return only valid JSON with this shape:
       title:'3. Stress, Survival Compression, and Dark Coherence',
       shortTitle:'Stress and dark coherence',
       learn:'Note: This lesson uses educational framing to understand institutional pressure on agency. It is not a mental health assessment, a diagnostic instrument, or therapeutic guidance. If you are experiencing significant distress, please speak with a counselor or trusted person.\n\nStress can narrow the field of possible action. Survival compression occurs when short-term safety, grades, money, approval, or threat become so dominant that the person can no longer easily access their wider values. Dark coherence names a pattern that may feel stable because it keeps the system going, but does so by shrinking agency, beauty, relationship, truth, or future possibility.',
-      reflect:'Where do you become more automatic, defensive, avoidant, or compliant under pressure? What does your Daily Pulse or recent life pattern suggest may be narrowing?',
-      apply:'Save a Daily Pulse, then ask the Twin to interpret it cautiously. Consider creating a Fear Wall or Practice Living Thread.',
+      reflect:'Where do you become more automatic, defensive, avoidant, or compliant under pressure? What does your Daily Practice / Coherence Check or recent life pattern suggest may be narrowing?',
+      apply:'Save a Daily Practice / Coherence Check, then ask the Twin to interpret it cautiously. Consider creating a Fear Wall or Practice Living Thread.',
       prompt:'Help me examine whether stress or survival compression is narrowing my agency. Please treat this carefully, not clinically. Connect it to Pulse signals, possible dark coherence, and one agency-preserving action.'
     },
     {
@@ -9299,7 +9345,7 @@ Return only valid JSON with this shape:
       shortTitle:'OS2 bridges',
       learn:'People do not need identical worldviews to cooperate. OS1 refers to shared meaning, worldview, or deep interpretation. OS2 refers to task-level coordination: different PRFs may still coordinate around a shared capability, such as reducing harm, protecting evidence, preserving dignity, or keeping a future option open. Functional equivalence allows cooperation without semantic collapse.',
       reflect:'Name a case where two people or groups disagree deeply but might still coordinate around one practical capability. What bridge could preserve difference while enabling action?',
-      apply:'Use the Ethical Reasoning Coach or Capability Engine Coach to identify one OS2 bridge in a real or course case.',
+      apply:'Use the Ethical Reasoning Coach or Development Arc Coach to identify one OS2 bridge in a real or course case.',
       prompt:'Help me distinguish OS1 disagreement from OS2 coordination in this situation. Where might functional equivalence allow cooperation without forcing false consensus?'
     },
     {
@@ -9309,7 +9355,7 @@ Return only valid JSON with this shape:
       learn:'Navigator reflection should not remain only in insight. A coherent next move is a small causal sequence that preserves future agency while testing reality. The user can move from reflection to Field Scan, Living Thread, Move Card, Current Move Plan, Document Capsule, Guide Note, or Twin conversation.',
       reflect:'What is one insight from this guided introduction that should become a protected commitment, field scan, or first small move?',
       apply:'Create one Living Thread or Move Card. Then ask the Twin to help you hold it without nagging, over-controlling, or deciding for you.',
-      prompt:'Help me convert one Capability Engine insight into a concrete Navigator action: Field Scan, Living Thread, Move Card, Current Move Plan, or Twin conversation. Keep it small, reversible, and agency-preserving.'
+      prompt:'Help me convert one Development Arc insight into a concrete Navigator action: Field Scan, Living Thread, Move Card, Current Move Plan, or Twin conversation. Keep it small, reversible, and agency-preserving.'
     }
   ];
 
@@ -9332,7 +9378,7 @@ Return only valid JSON with this shape:
     const percent = Math.round((doneCount / CAPABILITY_ENGINE_LESSONS.length) * 100);
     const firstOpen = (CAPABILITY_ENGINE_LESSONS.find(l => !completed[l.id]) || CAPABILITY_ENGINE_LESSONS[0]).id;
     return '<div id="capability-guided-intro" class="coach-primer-box" style="margin-top:12px;">'
-      + '<div class="card-title-row"><div><strong>Capability Engine Guided Introduction</strong><br><span class="muted">Five short lessons that teach the vocabulary before asking the user to apply it.</span></div><span class="coach-tag">' + doneCount + ' / ' + CAPABILITY_ENGINE_LESSONS.length + ' complete</span></div>'
+      + '<div class="card-title-row"><div><strong>Development Arc Guided Introduction</strong><br><span class="muted">Five short lessons that teach the vocabulary before asking the user to apply it.</span></div><span class="coach-tag">' + doneCount + ' / ' + CAPABILITY_ENGINE_LESSONS.length + ' complete</span></div>'
       + '<div class="progress"><div style="width:' + percent + '%"></div></div>'
       + '<div class="privacy-note"><strong>Course use:</strong> Each lesson follows Learn / Reflect / Apply. Reflections are stored locally and can be saved as Guide Notes, sent to the Twin, or used to start a Field Scan, Living Thread, or Move Card.</div>'
       + CAPABILITY_ENGINE_LESSONS.map(l => {
@@ -9396,13 +9442,13 @@ Return only valid JSON with this shape:
   function buildCapabilityLessonNoteText(id){
     const lesson = getCapabilityLesson(id);
     const reflection = capabilityLessonReflectionValue(id);
-    return 'Capability Engine Guided Introduction — ' + lesson.title + '\n\nFormal status: pedagogical guide for learning the Capability Engine; user reflection is a user-specific Navigator inference unless separately supported.\n\nLearn:\n' + lesson.learn + '\n\nReflect Prompt:\n' + lesson.reflect + '\n\nUser Reflection:\n' + (reflection || '[No reflection saved yet.]') + '\n\nApply:\n' + lesson.apply + '\n\nNavigator Bridge:\nThis lesson can become a Guide Note, Journal seed, Field Scan, Living Thread, Move Card, Current Move Plan, or Twin conversation.';
+    return 'Development Arc Guided Introduction — ' + lesson.title + '\n\nFormal status: pedagogical guide for learning the Development Arc; user reflection is a user-specific Navigator inference unless separately supported.\n\nLearn:\n' + lesson.learn + '\n\nReflect Prompt:\n' + lesson.reflect + '\n\nUser Reflection:\n' + (reflection || '[No reflection saved yet.]') + '\n\nApply:\n' + lesson.apply + '\n\nNavigator Bridge:\nThis lesson can become a Guide Note, Journal seed, Field Scan, Living Thread, Move Card, Current Move Plan, or Twin conversation.';
   }
 
   function saveCapabilityLessonAsCoachNote(id){
     const lesson = getCapabilityLesson(id);
     const text = buildCapabilityLessonNoteText(id);
-    const note = { id:uid('coachnote'), coachId:'capability-engine', coachTitle:'Capability Engine Coach', title:'Capability Guided Lesson — ' + lesson.shortTitle, input:lesson.prompt, mode:'quick', contextUsed:{ guidedLesson:id }, summary:summarizeCoachText(text), structuredText:text, source:'guided-introduction', createdAt:new Date().toISOString(), updatedAt:new Date().toISOString(), savedAt:new Date().toISOString() };
+    const note = { id:uid('coachnote'), coachId:'capability-engine', coachTitle:'Development Arc Coach', title:'Capability Guided Lesson — ' + lesson.shortTitle, input:lesson.prompt, mode:'quick', contextUsed:{ guidedLesson:id }, summary:summarizeCoachText(text), structuredText:text, source:'guided-introduction', createdAt:new Date().toISOString(), updatedAt:new Date().toISOString(), savedAt:new Date().toISOString() };
     setCoachNotes(getCoachNotes().concat([note]));
     currentCoachDraft = Object.assign({}, note);
     const out = document.getElementById('coach-output');
@@ -9418,7 +9464,7 @@ Return only valid JSON with this shape:
     showWorkspace('twin');
     const input = document.getElementById('chat-input');
     if(input){
-      input.value = 'I am working through the Capability Engine Guided Introduction. Please help me reflect on this lesson as my Co-Living Twin. Do not decide for me. Connect the lesson to my Pulse, PRF, Field Scans, Living Threads, and Current Move only if available. Ask one question that helps me turn the insight into a coherent next move.\n\nLESSON: ' + lesson.title + '\nLEARN: ' + lesson.learn + '\nREFLECTION: ' + (reflection || '[No reflection written yet.]') + '\nAPPLY: ' + lesson.apply;
+      input.value = 'I am working through the Development Arc Guided Introduction. Please help me reflect on this lesson as my Co-Living Twin. Do not decide for me. Connect the lesson to my Pulse, PRF, Field Scans, Living Threads, and Current Move only if available. Ask one question that helps me turn the insight into a coherent next move.\n\nLESSON: ' + lesson.title + '\nLEARN: ' + lesson.learn + '\nREFLECTION: ' + (reflection || '[No reflection written yet.]') + '\nAPPLY: ' + lesson.apply;
       input.focus();
     }
   }
@@ -9428,7 +9474,7 @@ Return only valid JSON with this shape:
     if(!shouldShowCapabilityEbbPanel(id)) return '';
     return '<div id="capability-ebb-panel" class="coach-primer-box" style="margin-top:12px;">'
       + '<strong>EBB Capability Practice + Situation Mapper Prep</strong><br>'
-      + '<span class="muted">Use this panel when the Capability Engine or EBB template needs concrete course scaffolding. It teaches status discipline, scores the Three Freedoms, and prepares simulation-ready variables.</span>'
+      + '<span class="muted">Use this panel when the Development Arc or EBB template needs concrete course scaffolding. It teaches status discipline, scores the Three Freedoms, and prepares simulation-ready variables.</span>'
       + '<div class="coach-layout" style="margin-top:12px;">'
       + '<div>'
       + '<div class="field"><label for="ebb-case-select">EBB case connector</label><select id="ebb-case-select" onchange="applyCapabilityEbbCase(this.value)">'
@@ -9528,7 +9574,7 @@ Return only valid JSON with this shape:
       os2_bridge_potential: ebb.os2BridgePotential,
       lowest_freedom: getLowestFreedom(ebb),
       continuation_question: getContextualCapabilityQuestion(ebb),
-      notes: 'Prepared by Navigator Capability Engine Coach. This is simulation-ready scaffolding, not a diagnosis or prediction.'
+      notes: 'Prepared by Navigator Development Arc Coach. This is simulation-ready scaffolding, not a diagnosis or prediction.'
     };
   }
 
@@ -9617,7 +9663,7 @@ Return only valid JSON with this shape:
       return 'The Maathai Liberation Coach applies social contract theory and the Liberation/Construction Step to the Green Belt Movement case. It runs after you have read Chapter 4. The coach moves from suppression analysis through the veil of ignorance test, to the structural features of the Green Belt Movement that made it work, to the OS2 design analysis of how one task served multiple values simultaneously, to your own Field Scan read as opportunity rather than only as constraint. Step 7 is the meta-awareness step — notice whether your engagement has been inspirational (admiring something you cannot reproduce) or analytical (identifying what made it work structurally). Step 8 is the private liberation question.';
     }
     if(id === 'capability-engine'){
-      return 'This coach translates the Capability Engine into Navigator practice and EBB classroom use. It treats agency as a capability distributed across body, meaning, field, relationships, and social affordances. The guided introduction adds five Learn / Reflect / Apply lessons, and v3.6B adds experience-first language so students can learn the vocabulary before using the analysis panel: agency as capability, the Three Freedoms, stress and dark coherence, functional equivalence and OS2 bridges, and moving from coherence to action. It does not make medical, therapeutic, or diagnostic claims.';
+      return 'This coach translates the Development Arc into Navigator practice and EBB classroom use. It treats agency as a capability distributed across body, meaning, field, relationships, and social affordances. The guided introduction adds five Learn / Reflect / Apply lessons, and v3.6B adds experience-first language so students can learn the vocabulary before using the analysis panel: agency as capability, the Three Freedoms, stress and dark coherence, functional equivalence and OS2 bridges, and moving from coherence to action. It does not make medical, therapeutic, or diagnostic claims.';
     }
     return 'This template is a placeholder for future EBB chapter-specific coaches. It gives the structure of a chapter coach without loading the full curriculum yet.';
   }
@@ -9651,7 +9697,7 @@ Return only valid JSON with this shape:
       return 'I am developing a research project and need help clarifying its central contribution, audience, missing evidence, and next writing move.';
     }
     if(id === 'capability-engine'){
-      return 'I want to examine a situation where my agency feels constrained. Help me use the Capability Engine carefully: classify one claim by formal status, score movement freedom, refusal freedom, and redesign freedom, connect the situation to my Pulse/Field Scans/Living Threads, identify an OS2 or functional-equivalence bridge, and prepare situation-mapper variables for future UCP/PA simulation.';
+      return 'I want to examine a situation where my agency feels constrained. Help me use the Development Arc carefully: classify one claim by formal status, score movement freedom, refusal freedom, and redesign freedom, connect the situation to my Pulse/Field Scans/Living Threads, identify an OS2 or functional-equivalence bridge, and prepare situation-mapper variables for future UCP/PA simulation.';
     }
     return 'I want to apply a chapter concept to my lived experience and a concrete case. Help me identify key terms, a case, a Field Scan suggestion, and a reflection outline.';
   }
@@ -9717,7 +9763,7 @@ Return only valid JSON with this shape:
       base += '\n\nFor the Ethical Reasoning Coach, explicitly include: (1) ethical issue recognition, (2) the user\'s PRF perspective, (3) other possible PRF perspectives, (4) deduction, induction, abduction, and analogy as reasoning lenses, (5) common logical fallacies and cognitive distortions relevant to ethical reasoning, including straw man, false dilemma, ad hominem, appeal to authority, slippery slope, hasty generalization, confirmation bias, equivocation, red herring, and is/ought confusion, (6) OS1 shared-meaning conflict versus OS2 task-level coordination, and (7) one agency-preserving next move. Make clear that OS2 coordination is not forced OS1 agreement.';
     }
     if(def.id === 'capability-engine'){
-      base += '\n\nFor the Capability Engine Coach, use strict status discipline: distinguish established evidence, formal analogy/modeling hypothesis, pedagogical metaphor, and user-specific Navigator inference. Teach before applying when the user is in guided-introduction mode. Include the Three Freedoms, stress/survival compression, functional equivalence, OS2 bridges, and one Navigator action. Do not make medical, therapeutic, diagnostic, legal, or predictive claims.';
+      base += '\n\nFor the Development Arc Coach, use strict status discipline: distinguish established evidence, formal analogy/modeling hypothesis, pedagogical metaphor, and user-specific Navigator inference. Teach before applying when the user is in guided-introduction mode. Include the Three Freedoms, stress/survival compression, functional equivalence, OS2 bridges, and one Navigator action. Do not make medical, therapeutic, diagnostic, legal, or predictive claims.';
     }
     if(def.id === 'core-traditions'){
       base += '\n\nFor the Core Traditions Coach, compare traditions as lenses rather than declaring a winner. Show what each tradition notices, what it may miss, and where different theories can support functionally equivalent action.';
@@ -9743,7 +9789,7 @@ Return only valid JSON with this shape:
     const moveCount = getMoveCards().length;
     const progress = getCapabilityLessonProgress();
     const completed = CAPABILITY_ENGINE_LESSONS.filter(l => progress.completed && progress.completed[l.id]).map(l => l.shortTitle);
-    return 'Capability Engine Guide Note — Guided Introduction + EBB Practice\n\nSituation / Field / Question:\n' + (input || '[Name the life field, course case, workplace pressure, research issue, or agency challenge.]')
+    return 'Development Arc Guide Note — Guided Introduction + EBB Practice\n\nSituation / Field / Question:\n' + (input || '[Name the life field, course case, workplace pressure, research issue, or agency challenge.]')
       + '\n\nGuided Introduction Progress:\nCompleted lessons: ' + (completed.length ? completed.join('; ') : 'none yet') + '\n' + formatCapabilityLessonProgressForText(progress)
       + '\n\nEBB Case Connector:\nSelected case: ' + ebb.caseTitle
       + '\n\nGuided Formal Status Map:\nClaim: ' + (ebb.statusClaim || '[Name one claim from the case or your own situation.]')
@@ -9751,7 +9797,7 @@ Return only valid JSON with this shape:
       + '\nWhy this matters: students should not treat evidence, formal analogy, pedagogical metaphor, and user-specific inference as if they had the same warrant.'
       + '\n\nThree Capability Freedoms — Scores:\nMovement / Exit Freedom: ' + ebb.movementFreedom + ' / 5\nRefusal / Dissent Freedom: ' + ebb.refusalFreedom + ' / 5\nSocial Reconfiguration / Redesign Freedom: ' + ebb.redesignFreedom + ' / 5'
       + '\n\nCapability Interpretation:\nLowest freedom: ' + sim.lowest_freedom.label + ' (' + sim.lowest_freedom.score + ' / 5).\n' + sim.continuation_question
-      + '\n\nStress, Pulse, and Coherence:\nField stress load: ' + ebb.stressLoad + '. Suppression gap: ' + ebb.suppressionGap + '. BioBond support: ' + ebb.bioBondSupport + '. OS2 bridge potential: ' + ebb.os2BridgePotential + '.\nWhat stress load, survival compression, or dark coherence may be present? ' + (pulse ? ('Latest Pulse average: ' + Number(pulse.avg || 0).toFixed(1) + '; lowest signal: ' + (pulseLow ? pulseLow.label : 'not available') + '.') : 'No Daily Pulse reading is available yet.')
+      + '\n\nStress, Pulse, and Coherence:\nField stress load: ' + ebb.stressLoad + '. Suppression gap: ' + ebb.suppressionGap + '. BioBond support: ' + ebb.bioBondSupport + '. OS2 bridge potential: ' + ebb.os2BridgePotential + '.\nWhat stress load, survival compression, or dark coherence may be present? ' + (pulse ? ('Latest Pulse average: ' + Number(pulse.avg || 0).toFixed(1) + '; lowest signal: ' + (pulseLow ? pulseLow.label : 'not available') + '.') : 'No Daily Practice / Coherence Check reading is available yet.')
       + '\n\nFunctional Equivalence / OS2 Bridge:\nWhere might different PRFs coordinate around a shared capability or task without requiring full OS1 agreement? What minimal bridge preserves dignity, evidence, safety, agency, relationship, or future possibility?'
       + '\n\nNavigator Actions:\nSuggested next action: choose one.\n1. Create or update a Field Scan.\n2. Start a Living Thread.\n3. Generate a Move Card.\n4. Select or revise a Current Move Plan.\n5. Create a Document Capsule.\n6. Ask the Twin for a Co-Living reflection.\nActive Living Threads currently available: ' + (activeThreads.length ? activeThreads.map(t => t.title).join('; ') : 'none') + '.\nContext available: ' + fieldCount + ' field scans, ' + moveCount + ' move cards.'
       + '\n\nSituation Mapper Input for Future UCP/PA Modeling:\n' + JSON.stringify(sim, null, 2)
@@ -9769,7 +9815,7 @@ Return only valid JSON with this shape:
   }
 
   function buildCoachPrompt(def, input, mode, sel){
-    return 'Coach: ' + def.title + '\nMode: ' + mode + '\n\nUser task/situation:\n' + (input || '[No direct prompt entered.]') + '\n\nCoach definition:\n' + JSON.stringify({ purpose:def.purpose, outputs:def.outputs, steps:def.steps }, null, 2) + '\n\nSelected Navigator context:\n' + JSON.stringify(gatherCoachContext(sel), null, 2) + (def.id === 'capability-engine' ? '\n\nCapability Engine guided lessons:\n' + formatCapabilityLessonProgressForText(getCapabilityLessonProgress()) + '\n\nSituation Mapper Input:\n' + JSON.stringify(buildSituationMapperInput(), null, 2) : '');
+    return 'Coach: ' + def.title + '\nMode: ' + mode + '\n\nUser task/situation:\n' + (input || '[No direct prompt entered.]') + '\n\nCoach definition:\n' + JSON.stringify({ purpose:def.purpose, outputs:def.outputs, steps:def.steps }, null, 2) + '\n\nSelected Navigator context:\n' + JSON.stringify(gatherCoachContext(sel), null, 2) + (def.id === 'capability-engine' ? '\n\nDevelopment Arc guided lessons:\n' + formatCapabilityLessonProgressForText(getCapabilityLessonProgress()) + '\n\nSituation Mapper Input:\n' + JSON.stringify(buildSituationMapperInput(), null, 2) : '');
   }
 
   function summarizeCoachText(text){
